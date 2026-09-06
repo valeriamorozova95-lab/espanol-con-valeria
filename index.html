@@ -1,1 +1,11 @@
-<!doctype html><html lang="ru"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Español con Valeria</title><meta name="description" content="Интерактивные упражнения по испанскому языку"><link rel="stylesheet" href="style.css"></head><body data-view="home"><div id="app"></div><script src="app.js"></script></body></html>
+<!doctype html><html lang="ru"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Español con Valeria</title><meta name="description" content="Интерактивные упражнения по испанскому языку"><link rel="stylesheet" href="style.css"></head><body data-view="home"><div id="app"></div><script src="app.js"></script><script>
+(function(){
+  const grid=document.querySelector('.grid');
+  if(!grid)return;
+  const card=document.createElement('a');
+  card.className='card';
+  card.href='/espanol-con-valeria/pronombres/';
+  card.innerHTML='<span class="ico" style="background:#7c3aed">👥</span><small>Интерактивные задания</small><h2>Местоимения</h2><p>Личные местоимения: кто это, лишнее слово, группы и логические ловушки</p><span class="open">Открыть →</span>';
+  grid.appendChild(card);
+})();
+</script></body></html>
