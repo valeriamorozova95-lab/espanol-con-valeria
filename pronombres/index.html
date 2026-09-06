@@ -1,0 +1,173 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Местоимения · Español con Valeria</title>
+  <meta name="description" content="Интерактивные упражнения на личные местоимения в испанском языке для уровня A1">
+  <link rel="stylesheet" href="../style.css">
+  <style>
+    .exercise-block{margin:34px 0 54px}.exercise-head{margin-bottom:18px}.exercise-head h2{margin-bottom:8px}.exercise-head p{margin:0;color:#5d6470}.mini-label{display:inline-block;margin-bottom:8px;font-size:.78rem;font-weight:700;letter-spacing:.05em;text-transform:uppercase;color:#6d5bd0}.person-row{display:flex;gap:8px;flex-wrap:wrap;align-items:center}.person-chip{padding:8px 12px;border-radius:999px;background:#f3f0ff;font-weight:700}.wide-options{display:flex;flex-wrap:wrap;gap:8px;margin-top:10px}.answer-note{margin-top:8px;font-size:.95rem}.group-builder{display:grid;grid-template-columns:1fr;gap:10px}.group-builder select{min-width:150px}.logic{font-weight:650}.divider{height:1px;background:#e6e7eb;margin:46px 0}.score-box{position:sticky;bottom:16px;z-index:5}.small-note{font-size:.9rem;color:#6b7280;margin-top:6px}@media(min-width:720px){.group-builder{grid-template-columns:190px 1fr}}
+  </style>
+</head>
+<body>
+<header class="top"><div class="topin"><a class="brand" href="../"><span class="logo">ES</span><span>Español con Valeria</span></a><span class="tag">A1</span></div></header>
+<main class="wrap">
+  <section class="hero">
+    <a class="back" href="../">← Все упражнения</a>
+    <p>✦ Раздел</p>
+    <h1>Местоимения</h1>
+    <p>Четыре задания на личные местоимения: от замены имени до логических ловушек.</p>
+  </section>
+
+  <section class="exercise-block" id="ex1">
+    <div class="exercise-head"><span class="mini-label">Упражнение 1</span><h2>Кто это?</h2><p>Замени имя или группу людей подходящим личным местоимением.</p></div>
+    <div class="tasks" id="tasks1"></div>
+  </section>
+
+  <div class="divider"></div>
+
+  <section class="exercise-block" id="ex3">
+    <div class="exercise-head"><span class="mini-label">Упражнение 2</span><h2>Найди лишнее</h2><p>В каждой строке выбери местоимение, которое <strong>не подходит</strong> для указанного человека или группы.</p></div>
+    <div class="tasks" id="tasks3"></div>
+  </section>
+
+  <div class="divider"></div>
+
+  <section class="exercise-block" id="ex5">
+    <div class="exercise-head"><span class="mini-label">Упражнение 3</span><h2>Собери группу</h2><p>Выбери такой набор людей, который можно заменить указанным местоимением. В некоторых случаях правильных комбинаций в жизни может быть несколько, но здесь выбери вариант, который подходит полностью.</p></div>
+    <div class="tasks" id="tasks5"></div>
+  </section>
+
+  <div class="divider"></div>
+
+  <section class="exercise-block" id="ex6">
+    <div class="exercise-head"><span class="mini-label">Упражнение 4</span><h2>Правда или ошибка?</h2><p>Определи, правильно ли подобрано местоимение. Если нет — выбери правильный вариант.</p></div>
+    <div class="tasks" id="tasks6"></div>
+  </section>
+
+  <div class="panel controls score-box">
+    <span class="result" id="result">Выполни задания и нажми «Проверить всё»</span>
+    <button class="btn primary" id="check">Проверить всё</button>
+    <button class="btn" id="reset">Сбросить</button>
+  </div>
+</main>
+<footer class="footer">Español con Valeria · Интерактивные упражнения</footer>
+
+<script>
+const pronouns=['yo','tú','él','ella','usted','nosotros','nosotras','vosotros','vosotras','ellos','ellas','ustedes'];
+
+const ex1=[
+  ['Ana','ella'],['Pablo','él'],['Ana y Pablo','ellos'],['Marta y Elena','ellas'],
+  ['Carlos y yo','nosotros'],['Elena y yo','nosotras'],['Carlos y tú','vosotros'],
+  ['Marta, Carlos y yo','nosotros'],['Pedro, Luis y Miguel','ellos'],['Ana, Marta y Pedro','ellos'],
+  ['Señor García','usted'],['Señora López','usted']
+];
+
+const ex3=[
+  ['María',['ella','usted','ellos'],'ellos'],
+  ['Pedro y Juan',['ellos','él','ustedes'],'él'],
+  ['Ana y yo (две девушки)',['nosotras','nosotros','ellas'],'ellas'],
+  ['Pedro y yo (мужчина + женщина)',['nosotros','ellos','nosotras'],'ellos'],
+  ['Ana y Laura',['ellas','ellos','ella'],'ella'],
+  ['Tú y Carlos',['vosotros','ustedes','él'],'él'],
+  ['Señor López',['usted','él','ellos'],'ellos']
+];
+
+const ex5=[
+  ['nosotros',['YO + LUIS','ANA + LUIS','TÚ + LUIS'],'YO + LUIS'],
+  ['nosotras',['YO + ANA','ANA + MARTA','TÚ + ANA'],'YO + ANA'],
+  ['ellos',['ANA + LUIS','YO + LUIS','TÚ + LUIS'],'ANA + LUIS'],
+  ['ellas',['ANA + MARTA','YO + ANA','TÚ + MARTA'],'ANA + MARTA'],
+  ['vosotros',['TÚ + LUIS','YO + LUIS','ANA + LUIS'],'TÚ + LUIS'],
+  ['vosotras',['TÚ + ANA','YO + ANA','ANA + MARTA'],'TÚ + ANA']
+];
+
+const ex6=[
+  ['Ana y María = ellas.','Верно','ellas'],
+  ['Pedro y yo = ellos.','Ошибка','nosotros'],
+  ['Marta y yo (мы две девушки) = nosotras.','Верно','nosotras'],
+  ['Tú y Carlos = él.','Ошибка','vosotros'],
+  ['Carlos, Pedro y Juan = ellos.','Верно','ellos'],
+  ['Ana, Carlos y yo = nosotros.','Верно','nosotros'],
+  ['Marta y Elena = nosotras.','Ошибка','ellas'],
+  ['Tú, Ana y Carlos = vosotros.','Верно','vosotros'],
+  ['Señor García = usted.','Верно','usted'],
+  ['Ana = ellos.','Ошибка','ella']
+];
+
+function selectHTML(options,placeholder='Выбери ответ'){
+  return `<select class="select"><option value="">${placeholder}</option>${options.map(x=>`<option value="${x}">${x}</option>`).join('')}</select>`;
+}
+
+document.querySelector('#tasks1').innerHTML=ex1.map((t,i)=>`<article class="task" data-answer="${t[1]}"><p><span class="num">${i+1}</span><strong>${t[0]}</strong></p>${selectHTML(pronouns)}<div class="answer"></div></article>`).join('');
+
+document.querySelector('#tasks3').innerHTML=ex3.map((t,i)=>`<article class="task" data-answer="${t[2]}"><p><span class="num">${i+1}</span><strong>${t[0]}</strong></p><div class="wide-options">${t[1].map(x=>`<button class="choice" data-value="${x}">${x}</button>`).join('')}</div><div class="answer"></div></article>`).join('');
+
+document.querySelector('#tasks5').innerHTML=ex5.map((t,i)=>`<article class="task" data-answer="${t[2]}"><div class="group-builder"><p class="logic"><span class="num">${i+1}</span>${t[0]}</p>${selectHTML(t[1],'Выбери группу')}</div><div class="answer"></div></article>`).join('');
+
+document.querySelector('#tasks6').innerHTML=ex6.map((t,i)=>`<article class="task" data-state="${t[1]}" data-answer="${t[2]}"><p><span class="num">${i+1}</span><strong>${t[0]}</strong></p><div class="wide-options"><button class="choice state" data-value="Верно">Верно</button><button class="choice state" data-value="Ошибка">Ошибка</button></div><div class="correction" style="display:none;margin-top:10px">${selectHTML(pronouns,'Если ошибка — выбери правильное местоимение')}</div><div class="answer"></div></article>`).join('');
+
+function activateChoices(root){
+  root.addEventListener('click',e=>{
+    if(!e.target.classList.contains('choice'))return;
+    const task=e.target.closest('.task');
+    const group=e.target.parentElement;
+    group.querySelectorAll('.choice').forEach(x=>x.classList.remove('selected','ok','bad'));
+    e.target.classList.add('selected');
+    if(e.target.classList.contains('state')){
+      const correction=task.querySelector('.correction');
+      correction.style.display=e.target.dataset.value==='Ошибка'?'block':'none';
+      if(e.target.dataset.value==='Верно') correction.querySelector('select').value='';
+    }
+  });
+}
+activateChoices(document.querySelector('#tasks3'));
+activateChoices(document.querySelector('#tasks6'));
+
+function markSelect(task,correct){
+  const select=task.querySelector('select');
+  const box=task.querySelector('.answer');
+  const ok=select.value===correct;
+  box.innerHTML=ok?'<span class="success">Верно!</span>':`<span class="error">Правильный ответ: ${correct}</span>`;
+  return ok;
+}
+
+function checkAll(){
+  let score=0,total=0;
+  document.querySelectorAll('#tasks1 .task').forEach(t=>{total++; if(markSelect(t,t.dataset.answer))score++;});
+  document.querySelectorAll('#tasks3 .task').forEach(t=>{
+    total++;
+    const picked=t.querySelector('.selected');
+    t.querySelectorAll('.choice').forEach(b=>{b.classList.remove('ok','bad');if(b.dataset.value===t.dataset.answer)b.classList.add('ok');else if(b===picked)b.classList.add('bad');});
+    const ok=picked?.dataset.value===t.dataset.answer;
+    t.querySelector('.answer').innerHTML=ok?'<span class="success">Верно!</span>':`<span class="error">Лишнее местоимение: ${t.dataset.answer}</span>`;
+    if(ok)score++;
+  });
+  document.querySelectorAll('#tasks5 .task').forEach(t=>{total++; if(markSelect(t,t.dataset.answer))score++;});
+  document.querySelectorAll('#tasks6 .task').forEach(t=>{
+    total++;
+    const picked=t.querySelector('.state.selected');
+    const stateOk=picked?.dataset.value===t.dataset.state;
+    let correctionOk=true;
+    if(t.dataset.state==='Ошибка') correctionOk=t.querySelector('select').value===t.dataset.answer;
+    t.querySelectorAll('.state').forEach(b=>{b.classList.remove('ok','bad');if(b.dataset.value===t.dataset.state)b.classList.add('ok');else if(b===picked)b.classList.add('bad');});
+    const ok=stateOk&&correctionOk;
+    t.querySelector('.answer').innerHTML=ok?'<span class="success">Верно!</span>':`<span class="error">Ответ: ${t.dataset.state}${t.dataset.state==='Ошибка'?`; правильное местоимение — ${t.dataset.answer}`:''}</span>`;
+    if(ok)score++;
+  });
+  document.querySelector('#result').textContent=`Результат: ${score} из ${total}`;
+}
+
+document.querySelector('#check').addEventListener('click',checkAll);
+document.querySelector('#reset').addEventListener('click',()=>{
+  document.querySelectorAll('select').forEach(s=>s.value='');
+  document.querySelectorAll('.choice').forEach(b=>b.classList.remove('selected','ok','bad'));
+  document.querySelectorAll('.answer').forEach(a=>a.innerHTML='');
+  document.querySelectorAll('.correction').forEach(c=>c.style.display='none');
+  document.querySelector('#result').textContent='Выполни задания и нажми «Проверить всё»';
+  window.scrollTo({top:0,behavior:'smooth'});
+});
+</script>
+</body>
+</html>
