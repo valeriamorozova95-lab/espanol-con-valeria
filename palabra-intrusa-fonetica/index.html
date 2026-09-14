@@ -1,0 +1,27 @@
+<!doctype html>
+<html lang="ru"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Palabra intrusa · Español con Valeria</title><link rel="stylesheet" href="../style.css">
+<style>
+.intruso-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}
+.intruso-card{background:var(--paper);border:2px solid #ad7434;border-radius:18px 18px 8px 8px;padding:18px;box-shadow:5px 6px 0 rgba(88,48,29,.12)}
+.intruso-card .options{display:grid;grid-template-columns:repeat(2,1fr)}
+.intruso-card.correct{border-color:#55906b}.intruso-card.wrong{border-color:#b85d57}
+.note{background:#f4e6c9;border-left:5px solid var(--ochre);padding:13px 16px;border-radius:8px;margin-bottom:20px;line-height:1.55}
+@media(max-width:700px){.intruso-grid{grid-template-columns:1fr}.intruso-card .options{grid-template-columns:1fr}}
+</style></head><body><header class="top"><div class="topin"><a class="brand" href="../"><span class="logo">V</span>Español con Valeria</a><span class="tag">Фонетика</span></div></header>
+<main class="wrap"><a class="back" href="../">← Все упражнения</a><section class="hero"><h1>🕵️ Palabra intrusa</h1><p>В каждой строке найди слово, которое читается по другому правилу. Затем прочитай все четыре слова вслух.</p></section>
+<div class="note"><b>Второй раунд:</b> объясни по-русски или по-испански, почему выбранное слово лишнее.</div><div class="intruso-grid" id="quiz"></div>
+<div class="controls"><button class="btn" id="reset">Начать заново</button><span class="result" id="result">Выбрано: 0 из 20</span><button class="btn primary" id="check">Проверить</button></div></main><footer class="footer">Español con Valeria · фонетика</footer>
+<script>
+const rows=[
+[["cena","cero","centro","casa"],3],[["cine","cinco","ciudad","cosa"],3],[["queso","pequeño","paquete","cuatro"],3],[["quince","quitar","aquí","cuidado"],3],
+[["gente","general","coger","gato"],3],[["gimnasio","gigante","elegir","guitarra"],3],[["guerra","juguete","Miguel","agua"],3],[["guitarra","seguir","águila","girar"],3],
+[["vergüenza","cigüeña","pingüino","guerra"],3],[["pingüino","lingüista","bilingüe","guitarra"],3],[["jamón","jardín","naranja","gato"],3],[["jefe","ejercicio","mujer","mesa"],3],
+[["jirafa","elegir","gimnasio","kilo"],3],[["joven","rojo","trabajar","coche"],3],[["jamón","junio","jugar","gusto"],3],[["zapato","zona","zumo","casa"],3],
+[["niño","mañana","España","nido"],3],[["perro","arroz","arriba","pero"],3],[["calle","lluvia","amarillo","casa"],3],[["coche","chico","leche","cine"],3]];
+let selected={};const cards=[];const quiz=document.getElementById("quiz");
+rows.forEach((row,i)=>{const card=document.createElement("section");card.className="intruso-card";card.innerHTML='<p class="question"><span class="num">'+(i+1)+'</span> Найди лишнее слово</p><div class="options"></div>';const box=card.querySelector(".options");row[0].forEach((word,j)=>{const b=document.createElement("button");b.className="choice";b.textContent=word;b.onclick=()=>{selected[i]=j;box.querySelectorAll("button").forEach(x=>x.classList.remove("selected","ok","bad"));b.classList.add("selected");card.classList.remove("correct","wrong");update()};box.appendChild(b)});cards.push({card,box,row});quiz.appendChild(card)});
+function update(){document.getElementById("result").textContent="Выбрано: "+Object.keys(selected).length+" из "+rows.length}
+document.getElementById("check").onclick=()=>{let score=0;cards.forEach((x,i)=>{x.box.querySelectorAll("button").forEach((b,j)=>{b.classList.remove("selected","ok","bad");if(j===x.row[1])b.classList.add("ok");if(selected[i]===j&&j!==x.row[1])b.classList.add("bad")});const ok=selected[i]===x.row[1];x.card.classList.toggle("correct",ok);x.card.classList.toggle("wrong",selected[i]!==undefined&&!ok);if(ok)score++});document.getElementById("result").textContent="Результат: "+score+" из "+rows.length};
+document.getElementById("reset").onclick=()=>{selected={};cards.forEach(x=>{x.card.classList.remove("correct","wrong");x.box.querySelectorAll("button").forEach(b=>b.classList.remove("selected","ok","bad"))});update();scrollTo({top:0,behavior:"smooth"})};
+</script></body></html>
