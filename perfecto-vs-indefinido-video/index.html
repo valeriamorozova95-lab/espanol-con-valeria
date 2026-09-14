@@ -1,0 +1,96 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Perfecto vs. Indefinido · Español con Valeria</title>
+  <link rel="stylesheet" href="../style.css">
+  <style>
+    .video-wrap{position:relative;width:100%;padding-top:56.25%;overflow:hidden;border:4px solid var(--ochre);border-radius:22px 22px 10px 10px;background:#111;box-shadow:7px 8px 0 rgba(88,48,29,.15)}
+    .video-wrap iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
+    .video-link{display:inline-block;margin:14px 0 30px;color:var(--wine);font-weight:800}
+    .quiz{display:grid;gap:16px}
+    .quiz .task{padding:20px}
+    .quiz .task p{margin-bottom:12px}
+    .option{display:flex;align-items:flex-start;gap:10px;margin:8px 0;padding:10px 12px;border:1px solid #d7c29c;border-radius:10px;background:#fffdf7;cursor:pointer;line-height:1.45}
+    .option:hover{border-color:var(--ochre);background:#fff8ea}
+    .option input{margin-top:4px;accent-color:var(--petrol)}
+    .task.ok{border-color:#55906b;background:#f7fff7}
+    .task.bad{border-color:#b85d57;background:#fff8f5}
+    .feedback{font-weight:800;margin-top:12px}
+    .feedback.ok{color:#257044}.feedback.bad{color:#a6353c}
+    .quiz-controls{display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin-top:22px}
+    @media(max-width:560px){.quiz-controls{align-items:stretch;flex-direction:column}.quiz-controls .btn{width:100%}}
+  </style>
+</head>
+<body>
+<header class="top"><div class="topin"><a class="brand" href="../"><span class="logo">V</span>Español con Valeria</a><span class="tag">A2 · VÍDEO</span></div></header>
+<main class="wrap">
+  <a class="back" href="../">← Все упражнения</a>
+  <section class="hero">
+    <h1>🎬 Perfecto vs. Indefinido</h1>
+    <p>Посмотри видео и выбери правильный ответ.</p>
+  </section>
+
+  <div class="video-wrap">
+    <iframe src="https://www.youtube-nocookie.com/embed/fi1oNeRlJ8U" title="Pretérito perfecto vs. pretérito indefinido" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+  </div>
+  <a class="video-link" href="https://www.youtube.com/watch?v=fi1oNeRlJ8U" target="_blank" rel="noopener">Открыть видео на YouTube ↗</a>
+
+  <section>
+    <h2 class="section-title">Mira el vídeo y elige la opción correcta</h2>
+    <div class="quiz" id="quiz"></div>
+    <div class="quiz-controls">
+      <button class="btn primary" type="button" onclick="checkQuiz()">Проверить</button>
+      <button class="btn" type="button" onclick="resetQuiz()">Сбросить</button>
+      <span class="result" id="result" aria-live="polite"></span>
+    </div>
+  </section>
+</main>
+<footer class="footer">Español con Valeria · A2</footer>
+<script>
+const questions=[
+  {q:'¿Cuál es una diferencia importante entre el perfecto y el indefinido?',o:['El número de personas','La relación de la acción con el presente','El tipo de verbo'],a:1},
+  {q:'¿Qué tiempo se utiliza normalmente con un período de tiempo que todavía no ha terminado?',o:['Pretérito perfecto','Pretérito indefinido','Presente'],a:0},
+  {q:'¿Qué tiempo se utiliza normalmente con un período de tiempo ya terminado?',o:['Pretérito perfecto','Pretérito indefinido','Futuro'],a:1},
+  {q:'¿Cuál de estas expresiones suele aparecer con el pretérito perfecto?',o:['Ayer','El año pasado','Esta semana'],a:2},
+  {q:'¿Cuál suele aparecer con el pretérito indefinido?',o:['Hoy','Ayer','Esta mañana'],a:1},
+  {q:'¿Por qué podemos usar el perfecto con «este año»?',o:['Porque el año todavía no ha terminado','Porque hablamos del futuro','Porque todas las acciones del año son recientes'],a:0},
+  {q:'¿Cuál es la opción más lógica?',o:['Ayer he ido al cine.','Ayer fui al cine.','Ayer voy al cine.'],a:1},
+  {q:'¿Cuál es la opción más lógica?',o:['Esta semana he trabajado mucho.','Esta semana trabajé mucho.','Esta semana trabajaré mucho.'],a:0},
+  {q:'¿Qué expresión presenta normalmente un período terminado?',o:['Este mes','Hoy','El mes pasado'],a:2},
+  {q:'Si una persona dice «Este mes he leído tres libros», ¿cómo considera el período «este mes»?',o:['Como un período todavía abierto','Como un período completamente terminado','Como un período futuro'],a:0},
+  {q:'¿Qué tiempo usarías normalmente para contar lo que hiciste durante unas vacaciones del año pasado?',o:['Pretérito perfecto','Pretérito indefinido','Presente'],a:1},
+  {q:'Según la explicación del vídeo, la elección entre perfecto e indefinido depende mucho de…',o:['si el verbo es regular o irregular','cómo presenta el hablante el período de tiempo','si la oración es larga o corta'],a:1}
+];
+const quiz=document.getElementById('quiz');
+questions.forEach((item,i)=>{
+  const task=document.createElement('div');task.className='task';task.dataset.answer=item.a;
+  task.innerHTML='<p><span class="num">'+(i+1)+'</span><span class="question">'+item.q+'</span></p>'+
+    item.o.map((x,j)=>'<label class="option"><input type="radio" name="q'+i+'" value="'+j+'"><span>'+String.fromCharCode(97+j)+') '+x+'</span></label>').join('')+
+    '<div class="feedback"></div>';
+  quiz.appendChild(task);
+});
+function checkQuiz(){
+  let score=0;
+  document.querySelectorAll('#quiz .task').forEach((task,i)=>{
+    const selected=task.querySelector('input:checked');
+    const ok=selected&&Number(selected.value)===questions[i].a;
+    task.classList.toggle('ok',!!ok);task.classList.toggle('bad',!ok);
+    const feedback=task.querySelector('.feedback');
+    feedback.className='feedback '+(ok?'ok':'bad');
+    feedback.textContent=ok?'✓ Правильно':'Правильный ответ: '+String.fromCharCode(97+questions[i].a)+') '+questions[i].o[questions[i].a];
+    if(ok)score++;
+  });
+  document.getElementById('result').textContent='Результат: '+score+' из '+questions.length;
+}
+function resetQuiz(){
+  document.querySelectorAll('#quiz input').forEach(x=>x.checked=false);
+  document.querySelectorAll('#quiz .task').forEach(x=>x.classList.remove('ok','bad'));
+  document.querySelectorAll('#quiz .feedback').forEach(x=>x.textContent='');
+  document.getElementById('result').textContent='';
+  window.scrollTo({top:0,behavior:'smooth'});
+}
+</script>
+</body>
+</html>
