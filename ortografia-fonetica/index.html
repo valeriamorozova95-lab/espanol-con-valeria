@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="ru"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Как пишется слово? · Español con Valeria</title><link rel="stylesheet" href="../style.css">
+<style>
+.round{margin:30px 0 14px;color:var(--petrol);border-left:6px solid var(--ochre);padding-left:12px}
+.phon-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}
+.phon-card{background:var(--paper);border:2px solid #ad7434;border-radius:18px 18px 8px 8px;padding:18px;box-shadow:5px 6px 0 rgba(88,48,29,.12)}
+.phon-card .label{font-weight:850;color:var(--wine);margin-bottom:12px}
+.phon-card .options{display:grid;grid-template-columns:repeat(3,1fr)}
+.phon-card button{min-width:0}.phon-card.correct{border-color:#55906b}.phon-card.wrong{border-color:#b85d57}
+.teacher{background:#f4e6c9;border:1px dashed #9c6d32;border-radius:12px;padding:12px 15px;margin-top:16px}
+.teacher summary{cursor:pointer;font-weight:800;color:var(--wine)}
+.key{margin-top:10px;line-height:1.7;color:#5e5140}
+@media(max-width:700px){.phon-grid{grid-template-columns:1fr}.phon-card .options{grid-template-columns:1fr}}
+</style></head><body><header class="top"><div class="topin"><a class="brand" href="../"><span class="logo">V</span>Español con Valeria</a><span class="tag">Фонетика</span></div></header>
+<main class="wrap"><a class="back" href="../">← Все упражнения</a><section class="hero"><h1>🎧 Как пишется слово?</h1><p>Преподаватель произносит слово, не показывая его написание. Выбери A, B или C, затем прочитай правильный вариант вслух.</p></section>
+<div id="quiz"></div><div class="controls"><button class="btn" id="reset">Начать заново</button><span class="result" id="result">Выбрано: 0 из 18</span><button class="btn primary" id="check">Проверить</button></div>
+<details class="teacher"><summary>Ключ для преподавателя</summary><div class="key">1 cena · 2 cine · 3 cinco · 4 centro · 5 queso · 6 quince · 7 pequeño · 8 quitar · 9 paquete · 10 guerra · 11 guitarra · 12 juguete · 13 seguir · 14 Miguel · 15 pingüino · 16 vergüenza · 17 cigüeña · 18 bilingüe</div></details></main><footer class="footer">Español con Valeria · фонетика</footer>
+<script>
+const groups=[
+["CE / CI",[
+["sena","cena","quena",1],["cine","sine","quine",0],["zinco","cinco","quinco",1],["sentro","centro","quentro",1]]],
+["QUE / QUI",[
+["cueso","queso","ceso",1],["cuince","quince","cince",1],["pecueño","pequeño","peceño",1],["quitar","cuitar","citar",0],["pacuete","paquete","pacete",1]]],
+["GUE / GUI",[
+["güerra","guerra","gerra",1],["guitarra","güitarra","gitarra",0],["juguete","jugüete","jugete",0],["següir","segir","seguir",2],["Migüel","Miguel","Migel",1]]],
+["GÜE / GÜI",[
+["pinguino","pingüino","pinjüino",1],["verguenza","vergüenza","verjüenza",1],["cigüeña","cigueña","cijüeña",0],["bilingue","bilingüe","bilinje",1]]]
+];
+let selected={},cards=[];
+const quiz=document.getElementById("quiz");
+let n=0;
+groups.forEach(([title,items])=>{const h=document.createElement("h2");h.className="round";h.textContent=title;quiz.appendChild(h);const grid=document.createElement("div");grid.className="phon-grid";items.forEach(item=>{const i=n++;const card=document.createElement("section");card.className="phon-card";card.innerHTML='<div class="label">'+(i+1)+'. Слушай слово</div><div class="options"></div>';const box=card.querySelector(".options");item.slice(0,3).forEach((word,j)=>{const b=document.createElement("button");b.className="choice";b.textContent=String.fromCharCode(65+j)+". "+word;b.onclick=()=>{selected[i]=j;box.querySelectorAll("button").forEach(x=>x.classList.remove("selected","ok","bad"));b.classList.add("selected");card.classList.remove("correct","wrong");update()};box.appendChild(b)});cards[i]={card,box,item};grid.appendChild(card)});quiz.appendChild(grid)});
+function update(){document.getElementById("result").textContent="Выбрано: "+Object.keys(selected).length+" из "+n}
+document.getElementById("check").onclick=()=>{let score=0;cards.forEach((x,i)=>{x.box.querySelectorAll("button").forEach((b,j)=>{b.classList.remove("selected","ok","bad");if(j===x.item[3])b.classList.add("ok");if(selected[i]===j&&j!==x.item[3])b.classList.add("bad")});const ok=selected[i]===x.item[3];x.card.classList.toggle("correct",ok);x.card.classList.toggle("wrong",selected[i]!==undefined&&!ok);if(ok)score++});document.getElementById("result").textContent="Результат: "+score+" из "+n};
+document.getElementById("reset").onclick=()=>{selected={};cards.forEach(x=>{x.card.classList.remove("correct","wrong");x.box.querySelectorAll("button").forEach(b=>b.classList.remove("selected","ok","bad"))});update();scrollTo({top:0,behavior:"smooth"})};
+</script></body></html>
