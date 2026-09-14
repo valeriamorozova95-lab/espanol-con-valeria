@@ -3,6 +3,7 @@
   const grid=document.querySelector('.grid');
   if(!grid)return;
   const cards=[
+    ['adonde-lugares/','🚶','#7d3534','¿Adónde?','Тренируй ответы al parque, a la estación и a casa без глаголов'],
     ['estar-formas-lugares/','📍','#c78a37','Estar: формы и местонахождение','Тренируй estoy, estás, está, estamos, estáis, están и говори, где находятся люди'],
     ['ortografia-fonetica/','🎧','#b05d39','Как пишется слово?','Слушай слово и выбирай правильное написание: CE/CI, QUE/QUI, GUE/GUI и GÜE/GÜI'],
     ['palabra-intrusa-fonetica/','🕵️','#356c68','Palabra intrusa','Найди лишнее слово в каждой строке и объясни правило чтения'],
@@ -10,11 +11,6 @@
     ['la-familia-de-ana/','📖','#d97706','La familia de Ana','Прочитай текст, выучи новые слова и ответь на вопросы'],
     ['elige-y-explica/','💬','#168b78','Elige y explica','Выбирай варианты и тренируй полные ответы в настоящем времени'],['repaso/','✦','#7d3534','Repaso A1','Смешанное повторение: формы, слова и короткие фразы']
   ];
-  cards.forEach(([href,ico,color,title,description])=>{
-    const card=document.createElement('a');
-    card.className='card';card.href='/espanol-con-valeria/'+href;
-    card.innerHTML='<span class="ico" style="background:'+color+'">'+ico+'</span><small>Интерактивное задание</small><h2>'+title+'</h2><p>'+description+'</p><span class="open">Открыть →</span>';
-    grid.appendChild(card);
-  });
+  cards.forEach(([href,ico,color,title,description])=>{const card=document.createElement('a');card.className='card';card.href='/espanol-con-valeria/'+href;card.innerHTML='<span class="ico" style="background:'+color+'">'+ico+'</span><small>Интерактивное задание</small><h2>'+title+'</h2><p>'+description+'</p><span class="open">Открыть →</span>';grid.appendChild(card)});
 })();
 </script></body></html>
