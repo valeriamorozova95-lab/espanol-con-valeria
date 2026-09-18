@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Ir · estar · lugares · Español con Valeria</title>
+  <link rel="stylesheet" href="../style.css">
+  <style>
+    .exercise{margin:30px 0 42px}.exercise h2{color:var(--petrol);border-left:6px solid var(--ochre);padding-left:12px}
+    .taskline{display:flex;align-items:center;gap:8px;flex-wrap:wrap;line-height:1.7}.taskline select,.taskline input{min-width:145px}
+    .mini-controls{display:flex;gap:10px;align-items:center;flex-wrap:wrap;margin-top:14px}.task.ok{border-color:#55906b;background:#f7fff7}.task.bad{border-color:#b85d57;background:#fff8f5}
+    .feedback{font-weight:800;margin-top:9px}.feedback.ok{color:#257044}.feedback.bad{color:#a6353c}.sample{background:#f4e6c9;border-left:5px solid var(--ochre);padding:12px 15px;border-radius:8px;line-height:1.6}
+    .words{font-size:1.05rem;font-weight:800;color:var(--petrol)}.wide{width:min(100%,560px)}.cardbox{background:var(--petrol);color:#fff7e3;border:4px solid var(--ochre);border-radius:24px 24px 10px 10px;padding:24px;text-align:center}
+    .cards{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin:18px 0}.cardword{background:#fff;border:2px solid #d7c29c;border-radius:14px;padding:16px 10px;color:#563b29;font-size:1.1rem;font-weight:850;min-height:58px;display:grid;place-items:center}
+    @media(max-width:620px){.taskline select,.taskline input{width:100%}.cards{grid-template-columns:1fr}.wide{width:100%}}
+  </style>
+</head>
+<body>
+<header class="top"><div class="topin"><a class="brand" href="../"><span class="logo">V</span>Español con Valeria</a><span class="tag">A1 · REPASO</span></div></header>
+<main class="wrap">
+  <a class="back" href="../">← Все упражнения</a>
+  <section class="hero"><h1>🧭 Ir · estar · lugares</h1><p>Направление, местонахождение и согласование прилагательных.</p></section>
+
+  <section class="exercise"><h2>1. IR + a / al / a la</h2><p class="hint">Поставь <b>ir</b> в правильную форму и добавь <b>a / al / a la</b>, где нужно.</p><p class="sample"><b>Пример:</b> Ana + parque → <b>Ana va al parque.</b><br><b>Опора:</b> voy · vas · va · vamos · vais · van</p><div class="tasks" id="ex1"></div><div class="mini-controls"><button class="btn primary" onclick="checkSelectPair('ex1')">Проверить</button><button class="btn" onclick="resetBlock('ex1')">Сбросить</button><span class="result" id="ex1-result"></span></div></section>
+
+  <section class="exercise"><h2>2. IR или ESTAR?</h2><p class="hint">Выбери <b>ir</b> или <b>estar</b> и поставь глагол в правильную форму.</p><div class="tasks" id="ex2"></div><div class="mini-controls"><button class="btn primary" onclick="checkSelects('ex2')">Проверить</button><button class="btn" onclick="resetBlock('ex2')">Сбросить</button><span class="result" id="ex2-result"></span></div></section>
+
+  <section class="exercise"><h2>3. Собери предложение</h2><p class="hint">Поставь слова в правильном порядке и измени форму глагола и прилагательного, если необходимо.</p><p class="sample"><b>Пример:</b> grande / Ana / parque / ir → <b>Ana va al parque grande.</b></p><div class="tasks" id="ex3"></div><div class="mini-controls"><button class="btn primary" onclick="checkInputs('ex3','ex3-result')">Проверить</button><button class="btn" onclick="resetInputs('ex3','ex3-result')">Сбросить</button><span class="result" id="ex3-result"></span></div></section>
+
+  <section class="exercise"><h2>4. Один → много</h2><p class="hint">Поставь всё предложение во множественное число.</p><p class="sample"><b>Пример:</b> La estudiante está en la escuela nueva. → <b>Las estudiantes están en las escuelas nuevas.</b></p><div class="tasks" id="ex4"></div><div class="mini-controls"><button class="btn primary" onclick="checkInputs('ex4','ex4-result')">Проверить</button><button class="btn" onclick="resetInputs('ex4','ex4-result')">Сбросить</button><span class="result" id="ex4-result"></span></div></section>
+
+  <section class="exercise"><h2>5. Исправь ошибку</h2><p class="hint">В каждом предложении есть одна ошибка. Исправь её. Но осторожно: одно предложение — ловушка без ошибки.</p><div class="tasks" id="ex5"></div><div class="mini-controls"><button class="btn primary" onclick="checkInputs('ex5','ex5-result')">Проверить</button><button class="btn" onclick="resetInputs('ex5','ex5-result')">Сбросить</button><span class="result" id="ex5-result"></span></div></section>
+
+  <section class="exercise"><h2>6. Выбери карточки и скажи фразу</h2><p class="hint">Нажми кнопку. Первая студентка составляет фразу с <b>ir</b>, вторая превращает движение в местонахождение с <b>estar</b>. Потом поменяйтесь ролями.</p><div class="cardbox"><div class="cards"><div><small>Кто?</small><div class="cardword" id="who">Ana</div></div><div><small>Куда?</small><div class="cardword" id="where">tienda</div></div><div><small>Какой?</small><div class="cardword" id="adj">pequeña</div></div></div><button class="btn" onclick="newCards()">Новые карточки</button></div><p class="sample"><b>Пример:</b> Ana + tienda + pequeña → <b>Ana va a la tienda pequeña.</b> → <b>Ana está en la tienda pequeña.</b></p></section>
+</main>
+<footer class="footer">Español con Valeria · A1</footer>
+<script>
+const verbOptions=['','voy','vas','va','vamos','vais','van'];
+const allVerbOptions=['','voy','vas','va','vamos','vais','van','estoy','estás','está','estamos','estáis','están'];
+const prepOptions=['','a','al','a la'];
+const ex1=[['Yo','café','voy','al'],['Tú','escuela','vas','a la'],['Ana','parque','va','al'],['Nosotros','restaurante','vamos','al'],['Pablo y Ana','museo','van','al'],['Yo','casa','voy','a'],['Tú','tienda','vas','a la'],['María','hotel','va','al'],['Nosotros','estación','vamos','a la'],['Los estudiantes','universidad','van','a la']];
+const ex2=[['Nosotros','al café.','vamos'],['Ana','en el parque.','está'],['Tú','al museo.','vas'],['Yo','en casa.','estoy'],['Pablo y María','a la escuela.','van'],['Nosotros','en el café.','estamos'],['Ana','al parque.','va'],['Tú','en el museo.','estás'],['Yo','a casa.','voy'],['Pablo y María','en la escuela.','están']];
+function options(list,answer,kind){return '<select data-answer="'+answer+'" data-kind="'+kind+'">'+list.map(x=>'<option value="'+x+'">'+(x||'— выбрать —')+'</option>').join('')+'</select>'}
+ex1.forEach((x,i)=>document.getElementById('ex1').insertAdjacentHTML('beforeend','<div class="task"><p class="taskline"><span class="num">'+(i+1)+'</span><b>'+x[0]+'</b>'+options(verbOptions,x[2],'verb')+options(prepOptions,x[3],'prep')+'<span>'+x[1]+'.</span></p><div class="feedback"></div></div>'));
+ex2.forEach((x,i)=>document.getElementById('ex2').insertAdjacentHTML('beforeend','<div class="task"><p class="taskline"><span class="num">'+(i+1)+'</span><b>'+x[0]+'</b>'+options(allVerbOptions,x[2],'verb')+'<span>'+x[1]+'</span></p><div class="feedback"></div></div>'));
+const ex3=[['pequeño / restaurante / yo / ir','Yo voy al restaurante pequeño.'],['casa / María / grande / estar','María está en la casa grande.'],['nuevo / nosotros / museo / ir','Nosotros vamos al museo nuevo.'],['Pablo / pequeño / café / estar','Pablo está en el café pequeño.'],['tienda / nueva / tú / ir','Tú vas a la tienda nueva.'],['bonito / estar / Ana y Pablo / parque','Ana y Pablo están en el parque bonito.'],['nueva / escuela / ir / los estudiantes','Los estudiantes van a la escuela nueva.'],['universidad / grande / la profesora / estar','La profesora está en la universidad grande.']];
+const ex4=[['El estudiante va al parque bonito.','Los estudiantes van a los parques bonitos.'],['La profesora está en la escuela pequeña.','Las profesoras están en las escuelas pequeñas.'],['El amigo va al restaurante nuevo.','Los amigos van a los restaurantes nuevos.'],['La estudiante está en la casa grande.','Las estudiantes están en las casas grandes.'],['El profesor va al museo pequeño.','Los profesores van a los museos pequeños.'],['La amiga está en la tienda nueva.','Las amigas están en las tiendas nuevas.']];
+const ex5=[['Yo va al parque.','Yo voy al parque.'],['Ana va al escuela.','Ana va a la escuela.'],['Nosotros está en casa.','Nosotros estamos en casa.'],['Pablo está en el hotel pequeño.','Pablo está en el hotel pequeño.'],['María va a la tienda nuevo.','María va a la tienda nueva.'],['Los estudiantes va al museo.','Los estudiantes van al museo.'],['Ana está en la casa pequeño.','Ana está en la casa pequeña.'],['Yo voy a el café.','Yo voy al café.'],['Pablo va al restaurante nueva.','Pablo va al restaurante nuevo.'],['Las profesoras está en la escuela.','Las profesoras están en la escuela.']];
+function renderInputs(id,data){data.forEach((x,i)=>document.getElementById(id).insertAdjacentHTML('beforeend','<div class="task"><p><span class="num">'+(i+1)+'</span><span class="words">'+x[0]+'</span></p><input class="input wide" data-answer="'+x[1]+'" autocomplete="off" placeholder="Напиши полное предложение"><div class="feedback"></div></div>'))}
+renderInputs('ex3',ex3);renderInputs('ex4',ex4);renderInputs('ex5',ex5);
+function mark(task,ok,message){task.classList.toggle('ok',ok);task.classList.toggle('bad',!ok);const f=task.querySelector('.feedback');f.className='feedback '+(ok?'ok':'bad');f.textContent=ok?'✓ Правильно':message}
+function checkSelectPair(id){const root=document.getElementById(id);let score=0;root.querySelectorAll('.task').forEach(t=>{const sels=t.querySelectorAll('select'),ok=[...sels].every(s=>s.value===s.dataset.answer);mark(t,ok,'Проверь форму ir и предлог.');if(ok)score++});document.getElementById(id+'-result').textContent='Результат: '+score+' из '+root.querySelectorAll('.task').length}
+function checkSelects(id){const root=document.getElementById(id);let score=0;root.querySelectorAll('.task').forEach(t=>{const s=t.querySelector('select'),ok=s.value===s.dataset.answer;mark(t,ok,'Правильная форма: '+s.dataset.answer);if(ok)score++});document.getElementById(id+'-result').textContent='Результат: '+score+' из '+root.querySelectorAll('.task').length}
+function norm(s){return s.toLowerCase().trim().replace(/[¡!¿?.,;:]/g,'').replace(/\s+/g,' ')}
+function checkInputs(id,res){const root=document.getElementById(id);let score=0;root.querySelectorAll('input').forEach(el=>{const ok=norm(el.value)===norm(el.dataset.answer);mark(el.closest('.task'),ok,'Правильно: '+el.dataset.answer);if(ok)score++});document.getElementById(res).textContent='Результат: '+score+' из '+root.querySelectorAll('input').length}
+function resetBlock(id){const root=document.getElementById(id);root.querySelectorAll('select').forEach(x=>x.value='');root.querySelectorAll('.task').forEach(x=>x.classList.remove('ok','bad'));root.querySelectorAll('.feedback').forEach(x=>x.textContent='');document.getElementById(id+'-result').textContent=''}
+function resetInputs(id,res){const root=document.getElementById(id);root.querySelectorAll('input').forEach(x=>x.value='');root.querySelectorAll('.task').forEach(x=>x.classList.remove('ok','bad'));root.querySelectorAll('.feedback').forEach(x=>x.textContent='');document.getElementById(res).textContent=''}
+const cardSets=[['yo','parque','grande'],['tú','escuela','pequeña'],['Ana','café','bonito'],['Pablo','museo','nuevo'],['nosotros','restaurante','grande'],['Ana y Pablo','tienda','pequeña']];let last=-1;function newCards(){let i;do{i=Math.floor(Math.random()*cardSets.length)}while(i===last);last=i;const x=cardSets[i];document.getElementById('who').textContent=x[0];document.getElementById('where').textContent=x[1];document.getElementById('adj').textContent=x[2]}
+</script>
+</body></html>
