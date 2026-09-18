@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Aspecto y personalidad · Español con Valeria</title>
+  <link rel="stylesheet" href="../style.css">
+  <style>
+    .exercise{margin:30px 0 46px}.exercise h2{color:var(--petrol);border-left:6px solid var(--ochre);padding-left:12px}
+    .vocab{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}.vocab div{display:flex;justify-content:space-between;gap:16px;padding:11px 14px;background:#fffaf0;border:1px solid #d8b67b;border-radius:10px}.vocab b{color:var(--wine)}
+    .match-grid,.profile-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}.task label{display:block;font-weight:800;margin-bottom:9px}.select{width:100%}
+    .people{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;margin-bottom:18px}.person{text-align:center;background:#fffaf0;border:2px solid #c78a37;border-radius:18px;padding:12px}.avatar{display:grid;place-items:center;min-height:100px;font-size:4.4rem;background:#f2e4ca;border-radius:14px}.letter{display:inline-grid;place-items:center;width:32px;height:32px;margin-top:9px;border-radius:50%;background:var(--wine);color:#fff;font-weight:900}
+    .wordbox{display:flex;flex-wrap:wrap;gap:8px;padding:14px;background:#f4e6c9;border-radius:14px;margin:12px 0}.wordbox span{background:#fffaf0;border:1px solid #c99a52;border-radius:999px;padding:7px 11px;font-weight:800}
+    .mini-controls{display:flex;gap:10px;align-items:center;flex-wrap:wrap;margin-top:14px}.feedback{margin-top:9px;font-weight:800}.ok{color:#257044}.bad{color:#a6353c}.task.good{border-color:#55906b;background:#f7fff7}.task.wrong{border-color:#b85d57;background:#fff8f5}
+    .video-wrap{position:relative;padding-bottom:56.25%;height:0;overflow:hidden;border:5px solid var(--ochre);border-radius:22px;background:#000;box-shadow:7px 8px 0 rgba(88,48,29,.15)}.video-wrap iframe{position:absolute;inset:0;width:100%;height:100%;border:0}.youtube-link{display:inline-block;margin-top:16px;color:var(--wine);font-weight:900}
+    @media(max-width:680px){.vocab,.match-grid,.profile-grid{grid-template-columns:1fr}.people{grid-template-columns:repeat(2,minmax(0,1fr))}.task{padding:15px}}
+  </style>
+</head>
+<body>
+<header class="top"><div class="topin"><a class="brand" href="../"><span class="logo">V</span>Español con Valeria</a><span class="tag">A1–A2 · DEBERES</span></div></header>
+<main class="wrap">
+  <a class="back" href="../">← Все упражнения</a>
+  <section class="hero"><h1>Aspecto y personalidad</h1><p>Сначала познакомься с новой лексикой, затем выполни четыре задания и посмотри видео.</p></section>
+
+  <section class="exercise"><h2>1. Vocabulario</h2><p class="hint">Используй этот словарь как опору при выполнении заданий.</p><div class="vocab" id="vocab"></div></section>
+
+  <section class="exercise"><h2>2. Relaciona</h2><p class="hint">Соедини слово с его определением на испанском.</p><div class="match-grid" id="matching"></div><div class="mini-controls"><button class="btn primary" onclick="checkSelects('matching')">Проверить</button><button class="btn" onclick="resetBlock('matching')">Сбросить</button><span class="result" id="matching-result"></span></div></section>
+
+  <section class="exercise"><h2>3. ¿Qué palabra es?</h2><p class="hint">Рассмотри персонажей и выбери подходящего человека для каждого описания.</p>
+    <div class="people"><div class="person"><div class="avatar">👨🏻‍🦰</div><span class="letter">A</span></div><div class="person"><div class="avatar">👩🏽‍🦱</div><span class="letter">B</span></div><div class="person"><div class="avatar">🏋️‍♂️</div><span class="letter">C</span></div><div class="person"><div class="avatar">👩🏻‍🏫</div><span class="letter">D</span></div><div class="person"><div class="avatar">👨🏻‍🦱</div><span class="letter">E</span></div><div class="person"><div class="avatar">👩🏻</div><span class="letter">F</span></div></div>
+    <div class="match-grid" id="pictures"></div><div class="mini-controls"><button class="btn primary" onclick="checkSelects('pictures')">Проверить</button><button class="btn" onclick="resetBlock('pictures')">Сбросить</button><span class="result" id="pictures-result"></span></div>
+  </section>
+
+  <section class="exercise"><h2>4. ¿Cómo es su personalidad?</h2><p class="hint">Прочитай описание и выбери два подходящих слова.</p><div class="wordbox"><span>aventurero/a</span><span>tímido/a</span><span>creativo/a</span><span>sociable</span><span>tranquilo/a</span><span>deportista</span><span>atrevido/a</span><span>extravagante</span></div><div class="profile-grid" id="profiles"></div><div class="mini-controls"><button class="btn primary" onclick="checkProfiles()">Проверить</button><button class="btn" onclick="resetBlock('profiles')">Сбросить</button><span class="result" id="profiles-result"></span></div></section>
+
+  <section class="exercise"><h2>🎬 Vídeo: Dating Apps &amp; Physical Descriptions</h2><p class="hint">Посмотри видео Easy Spanish после выполнения заданий.</p><div class="video-wrap"><iframe src="https://www.youtube-nocookie.com/embed/-fw88THuy7U" title="Easy Spanish — Dating Apps and Physical Descriptions" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe></div><a class="youtube-link" href="https://www.youtube.com/watch?v=-fw88THuy7U" target="_blank" rel="noopener">Открыть видео на YouTube →</a></section>
+</main>
+<footer class="footer">Español con Valeria · A1–A2</footer>
+<script>
+const vocab=[['atrevido/a','смелый, дерзкий'],['aventurero/a','любящий приключения'],['extrovertido/a','общительный, экстравертный'],['introvertido/a','замкнутый, интровертный'],['tímido/a','стеснительный'],['tranquilo/a','спокойный'],['creativo/a','творческий'],['divertido/a','весёлый'],['simpático/a','приятный, дружелюбный'],['extravagante','экстравагантный'],['sociable','общительный'],['deportista','спортивный'],['musculoso/a','мускулистый'],['delgado/a','худой, стройный'],['pelirrojo/a','рыжий'],['castaño/a','каштановый'],['rizado/a','кудрявый'],['liso/a','прямой (о волосах)'],['barba','борода'],['bigote','усы'],['llevar gafas','носить очки'],['parecer','казаться, выглядеть'],['tener pinta de…','выглядеть как…, производить впечатление…']];
+document.getElementById('vocab').innerHTML=vocab.map(x=>`<div><b>${x[0]}</b><span>${x[1]}</span></div>`).join('');
+const defs=[['atrevido/a','No tiene miedo de hacer cosas diferentes o difíciles.'],['aventurero/a','Le gusta viajar, descubrir lugares nuevos y vivir experiencias nuevas.'],['tímido/a','No le resulta fácil hablar con personas que no conoce.'],['extravagante','Tiene un estilo muy original, diferente y llamativo.'],['tranquilo/a','No se pone nervioso fácilmente y le gusta una vida relajada.'],['sociable','Le gusta conocer gente y hablar con otras personas.'],['creativo/a','Tiene ideas originales y le gusta crear cosas.'],['deportista','Hace mucho deporte.']];
+const options=defs.map(x=>x[0]);
+function select(answer){return `<select class="select" data-answer="${answer}"><option value="">Elige una palabra</option>${options.map(x=>`<option value="${x}">${x}</option>`).join('')}</select>`}
+document.getElementById('matching').innerHTML=defs.map((x,i)=>`<article class="task"><label><span class="num">${i+1}</span>${x[1]}</label>${select(x[0])}<div class="feedback"></div></article>`).join('');
+const pics=[['Es pelirrojo y tiene barba.','A'],['Tiene el pelo largo y rizado.','B'],['Es musculoso.','C'],['Lleva gafas.','D'],['Es delgado y tiene bigote.','E'],['Tiene el pelo castaño y liso.','F']];
+document.getElementById('pictures').innerHTML=pics.map((x,i)=>`<article class="task"><label><span class="num">${i+1}</span>${x[0]}</label><select class="select" data-answer="${x[1]}"><option value="">Elige A–F</option>${'ABCDEF'.split('').map(l=>`<option>${l}</option>`).join('')}</select><div class="feedback"></div></article>`).join('');
+const profiles=[['Laura','Le gusta viajar y visitar lugares nuevos. También le gusta hacer cosas nuevas.',['aventurero/a','atrevido/a']],['Mario','Hace mucho deporte. Le gusta hablar con otras personas y tiene muchos amigos.',['deportista','sociable']],['Clara','Le gusta dibujar y hacer fotos. Lleva ropa diferente y original.',['creativo/a','extravagante']],['Álex','Le gusta estar en casa, leer y escuchar música. No habla mucho con personas nuevas.',['tranquilo/a','tímido/a']]];
+document.getElementById('profiles').innerHTML=profiles.map((p,i)=>`<article class="task" data-answers="${p[2].join('|')}"><h3>${p[0]}</h3><p>${p[1]}</p><label>Palabra 1</label>${select('')}<label style="margin-top:10px">Palabra 2</label>${select('')}<div class="feedback"></div></article>`).join('');
+function mark(task,ok,answer){task.classList.toggle('good',ok);task.classList.toggle('wrong',!ok);const f=task.querySelector('.feedback');f.className='feedback '+(ok?'ok':'bad');f.textContent=ok?'✓ Правильно':'Ответ: '+answer}
+function checkSelects(id){const root=document.getElementById(id);let score=0;root.querySelectorAll('.task').forEach(t=>{const s=t.querySelector('select'),ok=s.value===s.dataset.answer;mark(t,ok,s.dataset.answer);if(ok)score++});document.getElementById(id+'-result').textContent=`Результат: ${score} из ${root.querySelectorAll('.task').length}`}
+function checkProfiles(){let score=0;document.querySelectorAll('#profiles .task').forEach(t=>{const ans=t.dataset.answers.split('|'),vals=[...t.querySelectorAll('select')].map(s=>s.value);const ok=vals[0]!==vals[1]&&ans.every(a=>vals.includes(a));mark(t,ok,ans.join(' + '));if(ok)score++});document.getElementById('profiles-result').textContent=`Результат: ${score} из ${profiles.length}`}
+function resetBlock(id){const root=document.getElementById(id);root.querySelectorAll('select').forEach(s=>s.value='');root.querySelectorAll('.task').forEach(t=>t.classList.remove('good','wrong'));root.querySelectorAll('.feedback').forEach(f=>f.textContent='');document.getElementById(id+'-result').textContent=''}
+</script>
+</body>
+</html>
