@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Род существительных · Español con Valeria</title>
+  <link rel="stylesheet" href="../style.css">
+  <style>
+    .exercise{margin:30px 0 44px}.exercise h2{color:var(--petrol);border-left:6px solid var(--ochre);padding-left:12px}
+    .mini-controls{display:flex;gap:10px;align-items:center;flex-wrap:wrap;margin-top:14px}.gender-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+    .word-row{display:flex;align-items:center;justify-content:space-between;gap:16px}.word{font-size:1.08rem;font-weight:800}.mf{display:flex;gap:7px}
+    .pick{min-width:44px;padding:8px 12px;border:1px solid #b7813e;border-radius:12px;background:#fff;cursor:pointer;font-weight:800;color:var(--petrol)}
+    .pick.selected{background:var(--petrol);color:#fff7e3}.task.ok{border-color:#55906b;background:#f7fff7}.task.bad{border-color:#b85d57;background:#fff8f5}
+    .feedback{font-weight:800;margin-top:8px}.feedback.ok{color:#257044}.feedback.bad{color:#a6353c}.rule{display:flex;align-items:center;gap:10px;flex-wrap:wrap;line-height:1.7}.rule input{width:90px}
+    .columns{display:grid;grid-template-columns:1fr 1fr;gap:18px}.bucket{background:#f4e6c9;border:2px solid #c99a52;border-radius:18px;padding:18px}.bucket h3{margin-top:0;color:var(--petrol)}
+    .bucket-list{min-height:82px;line-height:1.8;font-weight:700}.intruso-options{display:flex;flex-wrap:wrap;gap:8px;margin-top:10px}.intruso-options button{padding:9px 13px;border:1px solid #b7813e;border-radius:999px;background:#fff;cursor:pointer}.intruso-options button.selected{background:#f4e6c9;font-weight:900}
+    @media(max-width:680px){.gender-grid,.columns{grid-template-columns:1fr}.word-row{align-items:flex-start}.task{padding:15px}}
+  </style>
+</head>
+<body>
+<header class="top"><div class="topin"><a class="brand" href="../"><span class="logo">V</span>Español con Valeria</a><span class="tag">A1 · GÉNERO</span></div></header>
+<main class="wrap">
+  <a class="back" href="../">← Все упражнения</a>
+  <section class="hero"><h1>Masculino o femenino</h1><p>Письменная тренировка рода испанских существительных без артиклей.</p></section>
+
+  <section class="exercise"><h2>1. Masculino (M) o femenino (F)</h2><p class="hint">Выбери <b>M</b> или <b>F</b> для каждого слова.</p><div class="gender-grid" id="ex1"></div><div class="mini-controls"><button class="btn primary" onclick="checkMF('ex1')">Проверить</button><button class="btn" onclick="resetMF('ex1')">Сбросить</button><span class="result" id="ex1-result"></span></div></section>
+
+  <section class="exercise"><h2>2. Clasifica las palabras</h2><p class="hint">Определи род каждого слова. Выбранные слова появятся в соответствующей колонке.</p><div class="gender-grid" id="ex2"></div><div class="columns"><div class="bucket"><h3>MASCULINO</h3><div class="bucket-list" id="masc-list">—</div></div><div class="bucket"><h3>FEMENINO</h3><div class="bucket-list" id="fem-list">—</div></div></div><div class="mini-controls"><button class="btn primary" onclick="checkMF('ex2')">Проверить</button><button class="btn" onclick="resetMF('ex2')">Сбросить</button><span class="result" id="ex2-result"></span></div></section>
+
+  <section class="exercise"><h2>3. Completa la regla</h2><p class="hint">Посмотри на примеры и допиши окончание.</p><div class="tasks" id="rules"></div><div class="mini-controls"><button class="btn primary" onclick="checkInputs('rules')">Проверить</button><button class="btn" onclick="resetInputs('rules')">Сбросить</button><span class="result" id="rules-result"></span></div></section>
+
+  <section class="exercise"><h2>4. Las excepciones</h2><p class="hint">Эти слова нельзя определять только по простому правилу <b>-o / -a</b>. Выбери <b>M</b> или <b>F</b>.</p><div class="gender-grid" id="ex4"></div><div class="mini-controls"><button class="btn primary" onclick="checkMF('ex4')">Проверить</button><button class="btn" onclick="resetMF('ex4')">Сбросить</button><span class="result" id="ex4-result"></span></div></section>
+
+  <section class="exercise"><h2>5. Encuentra el intruso</h2><p class="hint">Нажми на лишнее слово по роду.</p><div class="tasks" id="intruso"></div><div class="mini-controls"><button class="btn primary" onclick="checkIntruso()">Проверить</button><button class="btn" onclick="resetIntruso()">Сбросить</button><span class="result" id="intruso-result"></span></div></section>
+</main>
+<footer class="footer">Español con Valeria · A1</footer>
+<script>
+const ex1=[['libro','M'],['casa','F'],['escuela','F'],['universidad','F'],['maestro','M'],['alumna','F'],['estación','F'],['parada','F'],['amigo','M'],['autobús','M'],['teléfono','M'],['tienda','F'],['periódico','M'],['mesa','F'],['gato','M'],['perra','F'],['construcción','F'],['limón','M'],['amor','M'],['ramo','M'],['bolígrafo','M'],['fruta','F']];
+const ex2=[['libro','M'],['casa','F'],['universidad','F'],['maestro','M'],['estación','F'],['parada','F'],['amigo','M'],['teléfono','M'],['verdad','F'],['tienda','F'],['revolución','F'],['periódico','M'],['mesa','F'],['construcción','F'],['limón','M'],['amor','M'],['ramo','M'],['bolígrafo','M'],['fruta','F']];
+const ex4=[['tema','M'],['problema','M'],['planeta','M'],['día','M'],['mano','F']];
+function renderMF(id,data){const root=document.getElementById(id);data.forEach((x,i)=>root.insertAdjacentHTML('beforeend',`<article class="task word-row" data-answer="${x[1]}" data-word="${x[0]}"><span><span class="num">${i+1}</span><span class="word">${x[0]}</span></span><span class="mf"><button class="pick" data-value="M">M</button><button class="pick" data-value="F">F</button></span><span class="feedback"></span></article>`));root.addEventListener('click',e=>{if(!e.target.classList.contains('pick'))return;const task=e.target.closest('.task');task.querySelectorAll('.pick').forEach(b=>b.classList.remove('selected'));e.target.classList.add('selected');task.classList.remove('ok','bad');task.querySelector('.feedback').textContent='';if(id==='ex2')updateBuckets()})}
+renderMF('ex1',ex1);renderMF('ex2',ex2);renderMF('ex4',ex4);
+function checkMF(id){const root=document.getElementById(id);let score=0;root.querySelectorAll('.task').forEach(t=>{const chosen=t.querySelector('.selected')?.dataset.value||'';const ok=chosen===t.dataset.answer;t.classList.toggle('ok',ok);t.classList.toggle('bad',!ok);const f=t.querySelector('.feedback');f.className='feedback '+(ok?'ok':'bad');f.textContent=ok?'✓':('→ '+t.dataset.answer);if(ok)score++});document.getElementById(id+'-result').textContent=`Результат: ${score} из ${root.querySelectorAll('.task').length}`}
+function resetMF(id){const root=document.getElementById(id);root.querySelectorAll('.selected').forEach(b=>b.classList.remove('selected'));root.querySelectorAll('.task').forEach(t=>t.classList.remove('ok','bad'));root.querySelectorAll('.feedback').forEach(f=>f.textContent='');document.getElementById(id+'-result').textContent='';if(id==='ex2')updateBuckets()}
+function updateBuckets(){const lists={M:[],F:[]};document.querySelectorAll('#ex2 .task').forEach(t=>{const v=t.querySelector('.selected')?.dataset.value;if(v)lists[v].push(t.dataset.word)});document.getElementById('masc-list').textContent=lists.M.join(' · ')||'—';document.getElementById('fem-list').textContent=lists.F.join(' · ')||'—'}
+const rules=[['casa · escuela · parada · tienda · mesa · fruta','Обычно слова на','a','→ femenino.'],['libro · maestro · amigo · teléfono · gato · ramo · bolígrafo','Обычно слова на','o','→ masculino.'],['estación · revolución · construcción','Слова на','ción','→ femenino.'],['universidad · verdad','Слова на','dad','→ femenino.']];
+rules.forEach((x,i)=>document.getElementById('rules').insertAdjacentHTML('beforeend',`<article class="task"><p><span class="num">${i+1}</span><b>${x[0]}</b></p><p class="rule">${x[1]} <b>-</b><input class="input" data-answer="${x[2]}" autocomplete="off"> ${x[3]}</p><div class="feedback"></div></article>`));
+function norm(s){return s.toLowerCase().trim().replace(/^-/,'')}
+function checkInputs(id){const root=document.getElementById(id);let score=0;root.querySelectorAll('input').forEach(input=>{const task=input.closest('.task'),ok=norm(input.value)===input.dataset.answer;task.classList.toggle('ok',ok);task.classList.toggle('bad',!ok);const f=task.querySelector('.feedback');f.className='feedback '+(ok?'ok':'bad');f.textContent=ok?'✓ Правильно':'Ответ: -'+input.dataset.answer;if(ok)score++});document.getElementById(id+'-result').textContent=`Результат: ${score} из ${root.querySelectorAll('input').length}`}
+function resetInputs(id){const root=document.getElementById(id);root.querySelectorAll('input').forEach(i=>i.value='');root.querySelectorAll('.task').forEach(t=>t.classList.remove('ok','bad'));root.querySelectorAll('.feedback').forEach(f=>f.textContent='');document.getElementById(id+'-result').textContent=''}
+const intr=[[['casa','escuela','libro','tienda'],'libro'],[['maestro','teléfono','fruta','ramo'],'fruta'],[['estación','construcción','revolución','amor'],'amor'],[['universidad','verdad','limón','estación'],'limón'],[['tema','problema','planeta','mano'],'mano'],[['periódico','autobús','bolígrafo','mesa'],'mesa']];
+intr.forEach((x,i)=>document.getElementById('intruso').insertAdjacentHTML('beforeend',`<article class="task" data-answer="${x[1]}"><span class="num">${i+1}</span><div class="intruso-options">${x[0].map(w=>`<button type="button" data-value="${w}">${w}</button>`).join('')}</div><div class="feedback"></div></article>`));
+document.getElementById('intruso').addEventListener('click',e=>{if(e.target.tagName!=='BUTTON')return;const task=e.target.closest('.task');task.querySelectorAll('button').forEach(b=>b.classList.remove('selected'));e.target.classList.add('selected');task.classList.remove('ok','bad');task.querySelector('.feedback').textContent=''});
+function checkIntruso(){let score=0;document.querySelectorAll('#intruso .task').forEach(t=>{const v=t.querySelector('.selected')?.dataset.value||'',ok=v===t.dataset.answer;t.classList.toggle('ok',ok);t.classList.toggle('bad',!ok);const f=t.querySelector('.feedback');f.className='feedback '+(ok?'ok':'bad');f.textContent=ok?'✓ Правильно':'Лишнее слово: '+t.dataset.answer;if(ok)score++});document.getElementById('intruso-result').textContent=`Результат: ${score} из ${intr.length}`}
+function resetIntruso(){document.querySelectorAll('#intruso .selected').forEach(b=>b.classList.remove('selected'));document.querySelectorAll('#intruso .task').forEach(t=>t.classList.remove('ok','bad'));document.querySelectorAll('#intruso .feedback').forEach(f=>f.textContent='');document.getElementById('intruso-result').textContent=''}
+</script>
+</body></html>
