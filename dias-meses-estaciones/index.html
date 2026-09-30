@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="ru"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Días, meses y estaciones · Español con Valeria</title><link rel="stylesheet" href="../style.css">
+<style>
+.exercise{margin:30px 0 44px}.exercise h2{color:var(--petrol);border-left:6px solid var(--ochre);padding-left:12px}
+.options{display:flex;gap:8px;flex-wrap:wrap;margin-top:10px}.pick{padding:8px 12px;border:1px solid #b7813e;border-radius:999px;background:#fff;cursor:pointer}.pick.selected{background:var(--petrol);color:#fff7e3}
+.task.ok{border-color:#55906b;background:#f7fff7}.task.bad{border-color:#b85d57;background:#fff8f5}.feedback{font-weight:800;margin-top:8px}.feedback.ok{color:#257044}.feedback.bad{color:#a6353c}
+.controls{display:flex;gap:10px;align-items:center;flex-wrap:wrap;margin-top:14px}.line{display:flex;align-items:center;gap:8px;flex-wrap:wrap}.line input{width:145px}.talk{line-height:1.9}
+.wordbank{font-weight:700;line-height:2;background:#f4e6c9;border-radius:16px;padding:14px 18px}
+</style></head><body>
+<header class="top"><div class="topin"><a class="brand" href="../"><span class="logo">V</span>Español con Valeria</a><span class="tag">A1 · CALENDARIO</span></div></header>
+<main class="wrap"><a class="back" href="../">← Все упражнения</a>
+<section class="hero"><h1>Días, meses y estaciones</h1><p>Повторяем дни недели, месяцы и времена года вместе.</p></section>
+
+<section class="exercise"><h2>1. ¿Día, mes o estación?</h2><p class="hint">Определи, к какой группе относится каждое слово.</p>
+<div class="wordbank">jueves · verano · febrero · lunes · otoño · abril · sábado · invierno · agosto · miércoles · primavera · diciembre</div>
+<div class="tasks" id="classify"></div><div class="controls"><button class="btn primary" onclick="checkClassify()">Проверить</button><button class="btn" onclick="resetClassify()">Сбросить</button><span class="result" id="classify-result"></span></div></section>
+
+<section class="exercise"><h2>2. ¿Qué falta?</h2><p class="hint">Впиши пропущенное слово.</p><div class="tasks" id="missing"></div>
+<div class="controls"><button class="btn primary" onclick="checkInputs('missing')">Проверить</button><button class="btn" onclick="resetInputs('missing')">Сбросить</button><span class="result" id="missing-result"></span></div>
+<h3>¿Qué va antes? ¿Qué va después?</h3><div class="tasks" id="beforeAfter"></div>
+<div class="controls"><button class="btn primary" onclick="checkPairs()">Проверить</button><button class="btn" onclick="resetPairs()">Сбросить</button><span class="result" id="pairs-result"></span></div></section>
+
+<section class="exercise"><h2>3. Adivina</h2><p class="hint">Прочитай подсказку и напиши день, месяц или время года.</p><div class="tasks" id="riddles"></div>
+<div class="controls"><button class="btn primary" onclick="checkInputs('riddles')">Проверить</button><button class="btn" onclick="resetInputs('riddles')">Сбросить</button><span class="result" id="riddles-result"></span></div>
+<article class="task"><b>Ahora tú:</b> придумай 3 загадки для преподавателя: <b>un día + un mes + una estación</b>.</article></section>
+
+<section class="exercise"><h2>4. ¿Verdadero o falso?</h2><p class="hint">Выбери verdadero или falso. Если предложение неверное, исправь его устно.</p><div class="tasks" id="tf"></div>
+<div class="controls"><button class="btn primary" onclick="checkTF()">Проверить</button><button class="btn" onclick="resetTF()">Сбросить</button><span class="result" id="tf-result"></span></div></section>
+
+<section class="exercise"><h2>5. ¿Cuándo?</h2><p class="hint">Ответь днём недели, месяцем или временем года. Постарайся дать полный ответ.</p>
+<article class="task talk">
+1. ¿Cuándo tienes clase de español?<br>
+2. ¿Cuándo es tu cumpleaños?<br>
+3. ¿Cuándo hace mucho frío?<br>
+4. ¿Cuándo descansas normalmente?<br>
+5. ¿Cuándo tienes vacaciones?<br>
+6. ¿Cuándo hace calor?<br>
+7. ¿Cuándo empieza tu semana de trabajo o de estudio?<br>
+8. ¿Cuándo celebras el Año Nuevo?<br>
+9. ¿Cuándo te gusta viajar?
+</article></section>
+
+<section class="exercise"><h2>6. Mis favoritos</h2><p class="hint">Completa y explica tus respuestas.</p>
+<article class="task talk">
+<b>Mi día favorito es...</b> porque...<br>
+<b>Mi mes favorito es...</b> porque...<br>
+<b>Mi estación favorita es...</b> porque...<br><br>
+<b>No me gusta mucho...</b> porque...
+</article></section>
+</main><footer class="footer">Español con Valeria · A1</footer>
+<script>
+const classify=[['jueves','día'],['verano','estación'],['febrero','mes'],['lunes','día'],['otoño','estación'],['abril','mes'],['sábado','día'],['invierno','estación'],['agosto','mes'],['miércoles','día'],['primavera','estación'],['diciembre','mes']];
+classify.forEach((x,i)=>document.getElementById('classify').insertAdjacentHTML('beforeend',`<article class="task" data-answer="${x[1]}"><b>${i+1}. ${x[0]}</b><div class="options"><button class="pick" data-value="día">día</button><button class="pick" data-value="mes">mes</button><button class="pick" data-value="estación">estación</button></div><div class="feedback"></div></article>`));
+document.getElementById('classify').addEventListener('click',select);
+function select(e){if(!e.target.classList.contains('pick'))return;let t=e.target.closest('.task');t.querySelectorAll('.pick').forEach(b=>b.classList.remove('selected'));e.target.classList.add('selected');t.classList.remove('ok','bad');t.querySelector('.feedback').textContent=''}
+function checkClassify(){checkPicks('classify','classify-result')} function resetClassify(){resetPicks('classify','classify-result')}
+const missing=[['lunes → martes →','miércoles','→ jueves'],['marzo → abril →','mayo','→ junio'],['primavera → verano →','otoño','→ invierno'],['viernes →','sábado','→ domingo'],['septiembre →','octubre','→ noviembre'],['invierno →','primavera','→ verano']];
+missing.forEach((x,i)=>document.getElementById('missing').insertAdjacentHTML('beforeend',`<article class="task"><div class="line"><span class="num">${i+1}</span><b>${x[0]}</b><input class="input" data-answer="${x[1]}"><b>${x[2]}</b></div><div class="feedback"></div></article>`));
+const pairs=[['agosto','julio','septiembre'],['miércoles','martes','jueves'],['otoño','verano','invierno']];
+pairs.forEach((x,i)=>document.getElementById('beforeAfter').insertAdjacentHTML('beforeend',`<article class="task" data-left="${x[1]}" data-right="${x[2]}"><div class="line"><span class="num">${i+1}</span><input class="input left"> ← <b>${x[0]}</b> → <input class="input right"></div><div class="feedback"></div></article>`));
+const riddles=[['Es un día. Está entre martes y jueves.','miércoles'],['Es un mes. Está después de junio y antes de agosto.','julio'],['Es una estación. Hace frío.','invierno'],['Es un día. Está después del domingo.','lunes'],['Es un mes. Es el último mes del año.','diciembre'],['Es una estación. Está después del verano.','otoño'],['Es un mes. Está entre febrero y abril.','marzo'],['Es un día. Está antes del sábado.','viernes']];
+riddles.forEach((x,i)=>document.getElementById('riddles').insertAdjacentHTML('beforeend',`<article class="task"><p><span class="num">${i+1}</span>${x[0]}</p><input class="input" data-answer="${x[1]}"><div class="feedback"></div></article>`));
+const tf=[['Enero es un mes de invierno.','verdadero'],['Martes está después de miércoles.','falso'],['Agosto es un mes de verano.','verdadero'],['La primavera está después del verano.','falso'],['Domingo está antes de lunes.','verdadero'],['Noviembre es un mes de otoño.','verdadero'],['Junio está antes de mayo.','falso'],['El invierno está entre el otoño y la primavera.','verdadero']];
+tf.forEach((x,i)=>document.getElementById('tf').insertAdjacentHTML('beforeend',`<article class="task" data-answer="${x[1]}"><b>${i+1}.</b> ${x[0]}<div class="options"><button class="pick" data-value="verdadero">Verdadero</button><button class="pick" data-value="falso">Falso</button></div><div class="feedback"></div></article>`));
+document.getElementById('tf').addEventListener('click',select);
+function norm(s){return s.toLowerCase().trim()}
+function checkInputs(id){let root=document.getElementById(id),score=0;root.querySelectorAll('input').forEach(inp=>{let t=inp.closest('.task'),ok=norm(inp.value)===inp.dataset.answer;mark(t,ok,ok?'✓ Правильно':'Ответ: '+inp.dataset.answer);if(ok)score++});document.getElementById(id+'-result').textContent=`Результат: ${score} из ${root.querySelectorAll('input').length}`}
+function resetInputs(id){let root=document.getElementById(id);root.querySelectorAll('input').forEach(i=>i.value='');root.querySelectorAll('.task').forEach(clear);document.getElementById(id+'-result').textContent=''}
+function checkPairs(){let score=0,all=document.querySelectorAll('#beforeAfter .task');all.forEach(t=>{let ok=norm(t.querySelector('.left').value)===t.dataset.left&&norm(t.querySelector('.right').value)===t.dataset.right;mark(t,ok,ok?'✓ Правильно':`Ответ: ${t.dataset.left} ← … → ${t.dataset.right}`);if(ok)score++});document.getElementById('pairs-result').textContent=`Результат: ${score} из ${all.length}`}
+function resetPairs(){document.querySelectorAll('#beforeAfter input').forEach(i=>i.value='');document.querySelectorAll('#beforeAfter .task').forEach(clear);document.getElementById('pairs-result').textContent=''}
+function checkPicks(id,res){let root=document.getElementById(id),score=0;root.querySelectorAll('.task').forEach(t=>{let v=t.querySelector('.selected')?.dataset.value||'',ok=v===t.dataset.answer;mark(t,ok,ok?'✓ Правильно':'Ответ: '+t.dataset.answer);if(ok)score++});document.getElementById(res).textContent=`Результат: ${score} из ${root.querySelectorAll('.task').length}`}
+function resetPicks(id,res){let root=document.getElementById(id);root.querySelectorAll('.selected').forEach(b=>b.classList.remove('selected'));root.querySelectorAll('.task').forEach(clear);document.getElementById(res).textContent=''}
+function checkTF(){checkPicks('tf','tf-result')} function resetTF(){resetPicks('tf','tf-result')}
+function mark(t,ok,msg){t.classList.toggle('ok',ok);t.classList.toggle('bad',!ok);let f=t.querySelector('.feedback');f.className='feedback '+(ok?'ok':'bad');f.textContent=msg}
+function clear(t){t.classList.remove('ok','bad');let f=t.querySelector('.feedback');if(f)f.textContent=''}
+</script></body></html>
