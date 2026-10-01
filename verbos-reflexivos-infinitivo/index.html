@@ -1,0 +1,44 @@
+<!doctype html><html lang="ru"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Verbos reflexivos · Español con Valeria</title><link rel="stylesheet" href="../style.css"></head><body><div id="app"></div><script>
+const BASE='/espanol-con-valeria';
+const app=document.querySelector('#app');
+const norm=s=>s.trim().toLowerCase().replace(/[¿?¡!.,]/g,'').replace(/\s+/g,' ');
+const ex1=[
+['Quiero + acostarse temprano',['Quiero acostarme temprano','Me quiero acostar temprano']],
+['Ana quiere + maquillarse',['Ana quiere maquillarse','Ana se quiere maquillar']],
+['Queremos + levantarse a las 7',['Queremos levantarnos a las 7','Nos queremos levantar a las 7']],
+['¿Quieres + ducharse ahora?',['¿Quieres ducharte ahora?','¿Te quieres duchar ahora?']],
+['Pablo quiere + afeitarse',['Pablo quiere afeitarse','Pablo se quiere afeitar']],
+['Quiero + vestirse rápido',['Quiero vestirme rápido','Me quiero vestir rápido']],
+['¿Queréis + irse ya?',['¿Queréis iros ya?','¿Os queréis ir ya?']],
+['Mis padres quieren + acostarse tarde',['Mis padres quieren acostarse tarde','Mis padres se quieren acostar tarde']]
+];
+const ex2=[
+['Marta ___ quiere acostar___ a las 11',['Marta se quiere acostar a las 11','Marta quiere acostarse a las 11']],
+['Nosotros queremos ___ preparar___ rápido',['Nosotros queremos prepararnos rápido','Nosotros nos queremos preparar rápido']],
+['¿Tú ___ quieres duchar___ ahora?',['¿Tú te quieres duchar ahora?','¿Tú quieres ducharte ahora?']],
+['Yo quiero ___ vestir___ después del desayuno',['Yo quiero vestirme después del desayuno','Yo me quiero vestir después del desayuno']],
+['Mis amigos ___ quieren ir___ a casa',['Mis amigos se quieren ir a casa','Mis amigos quieren irse a casa']],
+['¿Vosotros queréis ___ levantar___ temprano?',['¿Vosotros queréis levantaros temprano?','¿Vosotros os queréis levantar temprano?']],
+['Carlos ___ quiere afeitar___ por la mañana',['Carlos se quiere afeitar por la mañana','Carlos quiere afeitarse por la mañana']],
+['Yo ___ quiero maquillar___ para la fiesta',['Yo me quiero maquillar para la fiesta','Yo quiero maquillarme para la fiesta']]
+];
+const ex3=[
+['Quiero me duchar.',['Quiero ducharme','Me quiero duchar']],
+['Ana te quiere acostar temprano.',['Ana quiere acostarse temprano','Ana se quiere acostar temprano']],
+['Nosotros queremos acostarse a las diez.',['Nosotros queremos acostarnos a las diez','Nosotros nos queremos acostar a las diez']],
+['¿Tú quieres ducharse ahora?',['¿Tú quieres ducharte ahora?','¿Tú te quieres duchar ahora?']],
+['Pablo se quiere afeitarse.',['Pablo quiere afeitarse','Pablo se quiere afeitar']],
+['Yo quiero vestirte rápido.',['Yo quiero vestirme rápido','Yo me quiero vestir rápido']],
+['Mis padres quieren acostarnos tarde.',['Mis padres quieren acostarse tarde','Mis padres se quieren acostar tarde']],
+['¿Vosotros os queréis iros ya?',['¿Vosotros queréis iros ya?','¿Vosotros os queréis ir ya?']]
+];
+const qs=['¿Quieres levantarte temprano mañana?','¿Quieres acostarte tarde este fin de semana?','¿Quieres ducharte por la mañana o por la noche?','¿Quieres arreglarte antes de salir de casa?','¿Quieres quedarte en casa este sábado?','¿Quieres despertarte temprano el domingo?','¿Quieres irte de vacaciones pronto?','¿Quieres vestirte rápido por la mañana?'];
+function inputs(tasks,cls){return tasks.map((t,i)=>`<article class="task ${cls}" data-i="${i}"><p><span class="num">${i+1}</span>${t[0]}</p><input class="input" placeholder="Escribe tu respuesta"><div class="answer"></div></article>`).join('')}
+app.innerHTML=`<header class="top"><div class="topin"><a class="brand" href="${BASE}/"><span class="logo">ES</span><span>Español con Valeria</span></a><span class="tag">A1–A2</span></div></header><main class="wrap"><section class="hero"><a class="back" href="${BASE}/">← Все упражнения</a><h1>Verbos reflexivos</h1><p>Возвратные местоимения с конструкцией <b>querer + infinitivo</b>: две возможные позиции местоимения.</p></section>
+<h2 class="section-title">1. Dos maneras</h2><div class="panel sample"><p><b>Ejemplo:</b> Quiero + ducharse → <b>Quiero ducharme.</b> / <b>Me quiero duchar.</b></p><p class="hint">Перепиши каждую фразу двумя способами.</p></div><div class="tasks" id="ex1">${inputs(ex1,'')}</div>
+<h2 class="section-title">2. ¿Dónde va el pronombre?</h2><div class="panel"><p class="hint">Поставь возвратное местоимение в правильное место. Напиши один правильный вариант — после проверки увидишь оба.</p></div><div class="tasks" id="ex2">${inputs(ex2,'')}</div>
+<h2 class="section-title">3. Detective de errores</h2><div class="panel"><p class="hint">В каждой фразе есть ошибка. Исправь её. Возможны два правильных варианта.</p></div><div class="tasks" id="ex3">${inputs(ex3,'')}</div>
+<h2 class="section-title">4. ¿Y tú?</h2><div class="panel"><p class="hint">Ответь полным предложением. Где возможно, попробуй сказать ответ двумя способами.</p></div><div class="tasks">${qs.map((q,i)=>`<article class="task"><p class="question"><span class="num">${i+1}</span>${q}</p><textarea class="textarea" placeholder="Escribe tu respuesta..."></textarea></article>`).join('')}</div>
+<div class="panel controls"><span class="result" id="result">Готова проверить первые 3 упражнения?</span><button class="btn primary" id="check">Проверить</button></div></main><footer class="footer">Español con Valeria · Интерактивные упражнения</footer>`;
+document.querySelector('#check').addEventListener('click',()=>{let score=0,total=ex1.length+ex2.length+ex3.length;[['#ex1',ex1],['#ex2',ex2],['#ex3',ex3]].forEach(([id,data])=>{document.querySelectorAll(id+' .task').forEach((el,i)=>{const v=norm(el.querySelector('input').value);const ok=data[i][1].some(a=>norm(a)===v);if(ok)score++;el.querySelector('.answer').innerHTML=ok?'<span class="success">Верно!</span>':'<span class="error">Варианты: '+data[i][1].join(' / ')+'</span>'})});document.querySelector('#result').textContent='Результат: '+score+' из '+total});
+</script></body></html>
