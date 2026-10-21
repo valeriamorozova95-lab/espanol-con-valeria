@@ -1,0 +1,93 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Preguntas para hablar · Español con Valeria</title>
+<link rel="stylesheet" href="../style.css">
+<style>
+.exercise{margin:28px 0 42px}.exercise>p{line-height:1.7}.note{background:#fff1d7;border-left:5px solid var(--ochre);padding:14px 18px;margin:16px 0;line-height:1.65}.prompt{font-size:1.08rem;line-height:1.7}.reveal{margin-top:12px}.sample{background:#eaf4ee;border-radius:8px;padding:12px 15px;line-height:1.8;margin-top:12px}.task .options{margin-top:10px}.feedback{font-weight:700;margin-top:10px;min-height:1.3em}.ok{color:#257044}.bad{color:#a6353c}.object-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}.object-card{background:var(--paper);border:1px solid #c49a68;border-left:5px solid var(--leaf);padding:18px;box-shadow:3px 4px 0 #5d39211a}.object-card:nth-child(even){border-left-color:var(--ochre)}.object-card h3{margin:0 0 10px;color:var(--petrol)}.object-card p{line-height:1.6}.object-card button{margin:4px 5px 4px 0}.object-answer{display:none;background:#eaf4ee;padding:10px 12px;margin-top:10px;border-radius:7px;line-height:1.7}.object-answer.show{display:block}.result{line-height:1.5}@media(max-width:560px){.object-grid{grid-template-columns:1fr}.controls{align-items:flex-start;flex-direction:column}}
+</style>
+</head>
+<body>
+<header class="top"><div class="topin"><a class="brand" href="../"><span class="logo">V</span>Español con Valeria</a><span class="tag">A1–A2 · PREGUNTAS</span></div></header>
+<main class="wrap">
+<a class="back" href="../">← Все упражнения</a>
+<section class="hero"><h1>💬 Preguntas para hablar</h1><p>Разговорная практика вопросительных слов и глаголов <b>querer</b> и <b>hacer</b>. Сначала подумай, потом отвечай вслух!</p></section>
+
+<section class="exercise">
+<h2>1. 🗣️ ¿Qué pregunta necesitas?</h2>
+<p>Прочитай ответ и придумай вопрос, который мог бы его вызвать. Скажи вопрос вслух, а затем нажми «Вариант ответа», чтобы свериться. Возможны и другие правильные варианты.</p>
+<div class="note"><b>Пример:</b> — Soy de Argentina. → ¿De dónde eres?</div>
+<div id="open-questions" class="tasks"></div>
+<div class="controls"><button class="btn" id="prev-q">← Назад</button><button class="btn primary" id="show-q">Вариант ответа</button><button class="btn" id="next-q">Следующий →</button><span class="result" id="q-counter"></span></div>
+<div id="q-sample" class="sample" hidden></div>
+</section>
+
+<section class="exercise">
+<h2>2. 🎯 Elige la pregunta correcta</h2>
+<p>Выбери вопрос, который лучше всего подходит к ответу. После выбора нажми «Проверить».</p>
+<div id="choice-tasks" class="tasks"></div>
+<div class="controls"><button class="btn primary" id="check-choices">Проверить</button><button class="btn" id="reset-choices">Сбросить</button><span class="result" id="choice-result">Выбери ответы во всех заданиях.</span></div>
+</section>
+
+<section class="exercise">
+<h2>3. 📺 ¿Qué tienes o cómo es?</h2>
+<p>Сравни два вопроса: <b>¿Qué televisor tienes?</b> — какой телевизор у тебя есть / какой марки? <b>¿Cómo es tu televisor?</b> — какой он по размеру, внешнему виду или характеристикам?</p>
+<div class="note"><b>Образец:</b><br>— ¿Qué televisor tienes? — Tengo un Sony.<br>— ¿Cómo es tu televisor? — Es grande, moderno y bastante caro.</div>
+<div class="object-grid" id="objects"></div>
+<p><b>Практика в парах:</b> один студент задаёт оба вопроса, второй отвечает. Затем поменяйтесь ролями. Используйте минимум два прилагательных в ответе на вопрос с <i>¿Cómo es…?</i></p>
+</section>
+</main>
+<footer class="footer">Español con Valeria · Preguntas para hablar</footer>
+<script>
+const openQuestions=[
+{a:"Mi mejor amigo es Pablo.",q:["¿Quién es tu mejor amigo?"]},
+{a:"Quiero un café con leche.",q:["¿Qué quieres?","¿Qué quieres tomar?"]},
+{a:"Hago yoga tres veces a la semana.",q:["¿Qué haces tres veces a la semana?","¿Con qué frecuencia haces yoga?"]},
+{a:"Voy al cine con mi hermana.",q:["¿Con quién vas al cine?"]},
+{a:"Quiero hablar con María.",q:["¿Con quién quieres hablar?"]},
+{a:"Hago los deberes por la tarde.",q:["¿Qué haces por la tarde?"]},
+{a:"Hablo mucho de mi trabajo.",q:["¿De qué hablas mucho?"]},
+{a:"Quiero comprar un ordenador nuevo.",q:["¿Qué quieres comprar?"]},
+{a:"Mi televisor es grande y moderno.",q:["¿Cómo es tu televisor?"]},
+{a:"Tengo un Samsung.",q:["¿Qué televisor tienes?"]},
+{a:"Quiero ir a España.",q:["¿Adónde quieres ir?","¿Qué quieres hacer?"]},
+{a:"Hago la compra los sábados.",q:["¿Qué haces los sábados?"]},
+{a:"Mi madre habla con mi abuela todos los días.",q:["¿Con quién habla tu madre todos los días?"]}
+];
+let qi=0;
+function renderOpen(){const x=openQuestions[qi];document.getElementById('open-questions').innerHTML='<article class="task"><p class="prompt"><span class="num">'+(qi+1)+'</span> — '+x.a+'</p><p>¿Qué pregunta puedes hacer?</p></article>';document.getElementById('q-counter').textContent='Карточка '+(qi+1)+' из '+openQuestions.length;document.getElementById('q-sample').hidden=true;document.getElementById('q-sample').innerHTML='<b>Возможный вариант:</b><br>'+x.q.map(q=>'— '+q).join('<br>');}
+document.getElementById('prev-q').onclick=()=>{qi=(qi-1+openQuestions.length)%openQuestions.length;renderOpen()};
+document.getElementById('next-q').onclick=()=>{qi=(qi+1)%openQuestions.length;renderOpen()};
+document.getElementById('show-q').onclick=()=>{const e=document.getElementById('q-sample');e.hidden=!e.hidden};
+const choiceTasks=[
+{a:"Es muy simpática, inteligente y divertida.",q:["¿Qué es María?","¿Cómo es María?","¿Quiénes es María?"],correct:1},
+{a:"Quiero comprar un móvil nuevo.",q:["¿Qué quieres hacer?","¿Cómo quieres hacer?","¿Quién quieres hacer?"],correct:0},
+{a:"Con mis compañeros de trabajo.",q:["¿A quién trabajas?","¿De qué trabajas?","¿Con quién trabajas?"],correct:2},
+{a:"A mi hermana. Quiero invitarla a cenar.",q:["¿A quién quieres invitar?","¿Con quién quieres invitar?","¿Quiénes quieres invitar?"],correct:0},
+{a:"Tengo un LG.",q:["¿Cómo es tu televisor?","¿Qué televisor tienes?","¿Quién es tu televisor?"],correct:1},
+{a:"Sobre películas y música.",q:["¿Con quién hablas?","¿De qué hablas?","¿Qué haces?"],correct:1},
+{a:"Pedro y Ana son mis mejores amigos.",q:["¿Quiénes son tus mejores amigos?","¿Quién es tus mejores amigos?","¿Qué son tus mejores amigos?"],correct:0},
+{a:"Hago yoga y cocino.",q:["¿Quién quieres hacer?","¿Qué haces en tu tiempo libre?","¿Con quién haces?"],correct:1},
+{a:"Quiero hablar con el profesor.",q:["¿A quién quieres hablar?","¿Con quién quieres hablar?","¿De qué quieres hablar?"],correct:1},
+{a:"Quiero descansar y ver una película.",q:["¿Qué quieres hacer esta noche?","¿Cómo quieres esta noche?","¿Quién quieres esta noche?"],correct:0}
+];
+const choiceRoot=document.getElementById('choice-tasks');
+choiceRoot.innerHTML=choiceTasks.map((t,i)=>'<article class="task" data-task="'+i+'"><p><span class="num">'+(i+1)+'</span> — '+t.a+'</p><div class="options">'+t.q.map((q,j)=>'<button type="button" class="choice" data-option="'+j+'">'+String.fromCharCode(97+j)+') '+q+'</button>').join('')+'</div><div class="feedback" aria-live="polite"></div></article>').join('');
+choiceRoot.addEventListener('click',e=>{const b=e.target.closest('.choice');if(!b)return;const task=b.closest('.task');task.querySelectorAll('.choice').forEach(x=>x.classList.remove('selected','ok','bad'));b.classList.add('selected');task.querySelector('.feedback').textContent=''});
+document.getElementById('check-choices').onclick=()=>{let score=0,answered=0;choiceTasks.forEach((t,i)=>{const task=choiceRoot.querySelector('[data-task="'+i+'"]'),selected=task.querySelector('.selected'),feedback=task.querySelector('.feedback');task.querySelectorAll('.choice').forEach((b,j)=>{if(j===t.correct)b.classList.add('ok');else if(b===selected)b.classList.add('bad')});if(selected){answered++;if(Number(selected.dataset.option)===t.correct){score++;feedback.textContent='¡Correcto!';feedback.className='feedback ok'}else{feedback.textContent='Inténtalo otra vez. La respuesta correcta está marcada.';feedback.className='feedback bad'}}else{feedback.textContent='Выбери вариант.';feedback.className='feedback bad'}});document.getElementById('choice-result').textContent='Результат: '+score+' из '+choiceTasks.length+' · Отвечено: '+answered+' из '+choiceTasks.length};
+document.getElementById('reset-choices').onclick=()=>{choiceRoot.querySelectorAll('.choice').forEach(b=>b.classList.remove('selected','ok','bad'));choiceRoot.querySelectorAll('.feedback').forEach(f=>{f.textContent='';f.className='feedback'});document.getElementById('choice-result').textContent='Выбери ответы во всех заданиях.'};
+const objects=[
+{n:"El televisor",q:"¿Qué televisor tienes?",a:"Tengo un Sony.",c:"¿Cómo es tu televisor?",d:"Es grande, moderno y bastante caro."},
+{n:"El coche",q:"¿Qué coche tienes?",a:"Tengo un Toyota.",c:"¿Cómo es tu coche?",d:"Es pequeño, económico y cómodo."},
+{n:"El bolso",q:"¿Qué bolso tienes?",a:"Tengo un bolso negro de cuero.",c:"¿Cómo es tu bolso?",d:"Es elegante, ligero y bastante grande."},
+{n:"El perro",q:"¿Qué perro tienes?",a:"Tengo un perro mestizo.",c:"¿Cómo es tu perro?",d:"Es pequeño, cariñoso y muy activo."},
+{n:"La televisión",q:"¿Qué televisión tienes?",a:"Tengo una Samsung.",c:"¿Cómo es tu televisión?",d:"Es nueva, fina y tiene una pantalla grande."}
+];
+document.getElementById('objects').innerHTML=objects.map((o,i)=>'<article class="object-card"><h3>'+(i+1)+'. '+o.n+'</h3><p><b>'+o.q+'</b></p><button class="btn" type="button" data-reveal="'+i+'-1">Ver ejemplo</button><div class="object-answer" id="obj-'+i+'-1">'+o.a+'</div><p><b>'+o.c+'</b></p><button class="btn" type="button" data-reveal="'+i+'-2">Ver ejemplo</button><div class="object-answer" id="obj-'+i+'-2">'+o.d+'</div></article>').join('');
+document.getElementById('objects').addEventListener('click',e=>{const b=e.target.closest('[data-reveal]');if(!b)return;const target=document.getElementById('obj-'+b.dataset.reveal);target.classList.toggle('show');b.textContent=target.classList.contains('show')?'Ocultar ejemplo':'Ver ejemplo'});
+renderOpen();
+</script>
+</body>
+</html>
