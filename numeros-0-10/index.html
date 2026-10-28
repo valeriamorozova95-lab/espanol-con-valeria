@@ -5,4 +5,4 @@ function render(){document.getElementById('math').innerHTML=math.map((x,i)=>'<di
 function check(type){let count=0;sets[type].forEach((item,i)=>{const v=document.getElementById(type+'-'+i).value.trim(),ok=v!==''&&Number(v)===item[1],f=document.getElementById(type+'-f'+i);if(ok)count++;f.className='feedback '+(ok?'ok':'bad');f.textContent=ok?'✓ ¡Correcto!':(v===''?'Впиши ответ. ':'Попробуй ещё раз. ')+(type==='stories'?'':'');if(type==='stories'&&ok)f.textContent+=' '+item[2]});document.getElementById(type+'-result').textContent=count+' из '+sets[type].length+' верно'}
 function reset(type){sets[type].forEach((_,i)=>{document.getElementById(type+'-'+i).value='';document.getElementById(type+'-f'+i).textContent=''});document.getElementById(type+'-result').textContent=''}
 render();
-</script></body></html>
+</script><script src="../navigation.js"></script></body></html>
