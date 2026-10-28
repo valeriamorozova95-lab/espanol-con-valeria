@@ -34,4 +34,4 @@ groups.forEach(([title,items])=>{const h=document.createElement("h2");h.classNam
 function update(){document.getElementById("result").textContent="Выбрано: "+Object.keys(selected).length+" из "+n}
 document.getElementById("check").onclick=()=>{let score=0;cards.forEach((x,i)=>{x.box.querySelectorAll("button").forEach((b,j)=>{b.classList.remove("selected","ok","bad");if(j===x.item[3])b.classList.add("ok");if(selected[i]===j&&j!==x.item[3])b.classList.add("bad")});const ok=selected[i]===x.item[3];x.card.classList.toggle("correct",ok);x.card.classList.toggle("wrong",selected[i]!==undefined&&!ok);if(ok)score++});document.getElementById("result").textContent="Результат: "+score+" из "+n};
 document.getElementById("reset").onclick=()=>{selected={};cards.forEach(x=>{x.card.classList.remove("correct","wrong");x.box.querySelectorAll("button").forEach(b=>b.classList.remove("selected","ok","bad"))});update();scrollTo({top:0,behavior:"smooth"})};
-</script></body></html>
+</script><script src="../navigation.js"></script></body></html>
