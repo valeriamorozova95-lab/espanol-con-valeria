@@ -151,6 +151,28 @@ transition-timing-function:ease-in-out;
 .hero-slide{transition:opacity 1.2s ease-in-out;visibility:visible!important}
 .hero-palm{transition:opacity 1.2s ease-in-out,filter 1.2s ease-in-out,transform 1.2s ease-in-out}
 @media(prefers-reduced-motion:reduce){html,body,.top,.top-inner,.hero,.hero:before,.hero:after,.intro,.editorial-note,.category,.card,.filters input,.filters select,.empty,.footer,.brand,.brand span,.nav a,.hero .eyebrow,.hero h1,.hero p,.hero>a,.intro h2,.intro p,.results h2,.category strong,.category small,.card h3,.card p,.card .meta,.card .go,.count,#themeToggle,.hero-slide,.hero-palm{transition:none!important}}
+
+/* Fluid desktop layout: fill available screen width instead of a narrow fixed column */
+@media(min-width:701px){
+  main{width:100%;max-width:none;padding:clamp(18px,2vw,34px) clamp(20px,3.2vw,76px) 90px}
+  .top-inner{width:100%;max-width:none;padding-left:clamp(20px,3.2vw,76px);padding-right:clamp(20px,3.2vw,76px)}
+  .hero{width:100%;min-height:clamp(440px,42vw,680px);padding:clamp(42px,5vw,90px) clamp(36px,5vw,100px)}
+  .hero h1{font-size:clamp(52px,5.1vw,104px)}
+  .hero p{max-width:min(42vw,620px)}
+  .hero-scene{left:43%}
+  html[data-theme="dark"] .hero-scene{left:35%}
+  .categories{grid-template-columns:repeat(3,minmax(0,1fr))}
+}
+@media(min-width:1500px){
+  .categories{grid-template-columns:repeat(6,minmax(0,1fr))}
+  .cards{grid-template-columns:repeat(4,minmax(0,1fr))}
+}
+@media(min-width:701px) and (max-width:980px){
+  .hero{min-height:450px}
+  .hero h1{font-size:clamp(48px,6vw,68px)}
+  .hero p{max-width:48%}
+}
+@media(max-width:700px){main{width:100%;max-width:none;padding:18px 16px 65px}.top-inner{max-width:none}}
 </style></head><body><header class="top"><div class="top-inner"><a class="brand" href="/espanol-con-valeria/">Español <span>con Valeria</span></a><nav class="nav" aria-label="Основное меню"><a href="#categories">Разделы</a><a href="#catalog">Все упражнения</a><a href="#catalog" data-nav="Грамматика">Грамматика</a><a href="#catalog" data-nav="Видео и аудирование">Видео</a><a href="#catalog" data-nav="Культура">Культура</a></nav><button id="themeToggle" class="theme-toggle" type="button" aria-label="Переключить цветовую тему" aria-pressed="false">☾ Вечер</button></div></header><main><section class="hero"><div class="hero-scene" aria-hidden="true"></div><img class="hero-palm" src="assets/palm-fronds.svg" alt="" aria-hidden="true" loading="eager"><div class="eyebrow">IDIOMA · CULTURA · PERSONAS · HISTORIAS</div><h1>Español<br>con Valeria</h1><p>Интерактивная грамматика, лексика и живой испанский. Учимся с интересом, вдохновением и удовольствием.</p><a href="#catalog">Explorar ejercicios ↗</a></section><section class="intro" id="categories"><h2>Explora el español</h2><p>Шесть направлений для практики — выбирай то, что интересно сегодня.</p></section><section class="categories" id="categoryGrid"></section><section class="editorial-note"><strong>«Un idioma es siempre un puente.» ♡</strong><span>Язык — это больше, чем правила. Это люди, культура, истории и новые возможности.</span></section><section class="featured" aria-label="Рекомендуемые упражнения"><h2>✦ Ejercicios destacados</h2><div class="featured-grid"><a class="featured-card" href="numeros-11-20/"><img loading="lazy" alt="Испанская улица" src="https://images.unsplash.com/photo-1543783207-ec64e4d95325?auto=format&fit=crop&w=750&q=75"><div class="featured-body"><small>A1 · LÉXICO</small><h3>Números 11–20</h3><p>Интерактивная практика чисел</p></div></a><a class="featured-card" href="presente-saber-conocer/"><img loading="lazy" alt="Испанская архитектура" src="https://images.unsplash.com/photo-1518005020951-eccb494ad742?auto=format&fit=crop&w=750&q=75"><div class="featured-body"><small>A1 · GRAMÁTICA</small><h3>Saber / Conocer</h3><p>Глаголы, видео и упражнения</p></div></a><a class="featured-card" href="preguntas-querer-hacer/"><img loading="lazy" alt="Средиземноморский город" src="https://images.unsplash.com/photo-1499856871958-5b9627545d1a?auto=format&fit=crop&w=750&q=75"><div class="featured-body"><small>A1–A2 · PRÁCTICA</small><h3>Preguntas para hablar</h3><p>Практика живого общения</p></div></a></div></section><section class="results" id="catalog"><h2>Библиотека упражнений</h2><div class="filters"><input id="search" type="search" aria-label="Поиск упражнений" placeholder="Найти тему или упражнение…"><select id="level" aria-label="Уровень"><option value="">Все уровни</option><option>A1</option><option>A2</option><option>B1</option></select><select id="category" aria-label="Категория"><option value="">Все разделы</option></select></div><p class="count" id="count" aria-live="polite"></p><div class="cards" id="cards"></div></section></main><footer class="footer">Hecho con cariño · Español con Valeria</footer><script>
 const heroScene=document.querySelector(".hero-scene");
 const dayPhotos=Array.from({length:6},(_,i)=>"assets/assets/hero/hero-"+(i+1)+".jpg");
