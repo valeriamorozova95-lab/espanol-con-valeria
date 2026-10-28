@@ -74,5 +74,5 @@ function checkVideoReasons(){const root=document.getElementById('video-reasons')
 function checkVideoMain(){const t=document.getElementById('video-main'),correct=['0','2'],chosen=[...t.querySelectorAll('.selected')].map(b=>b.dataset.value),ok=chosen.length===2&&correct.every(x=>chosen.includes(x));t.querySelectorAll('.video-choice').forEach(b=>{b.classList.remove('answer-ok','answer-bad');if(correct.includes(b.dataset.value))b.classList.add('answer-ok');else if(b.classList.contains('selected'))b.classList.add('answer-bad')});mark(t,ok,'a + c');document.getElementById('video-main-result').textContent=ok?'Отлично!':'Выбери две главные идеи.'}
 function resetVideo(id){const root=document.getElementById(id);root.querySelectorAll('.video-choice').forEach(b=>b.classList.remove('selected','answer-ok','answer-bad'));root.querySelectorAll('select').forEach(s=>s.value='');root.querySelectorAll('.task').forEach(t=>t.classList.remove('good','wrong'));root.querySelectorAll('.feedback').forEach(f=>f.textContent='');const r=document.getElementById(id+'-result');if(r)r.textContent=''}
 </script>
-</body>
+<script src="../navigation.js"></script></body>
 </html>
