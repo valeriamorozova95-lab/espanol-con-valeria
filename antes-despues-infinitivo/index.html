@@ -15,4 +15,4 @@ function check3(){let n=0;q3.forEach((q,i)=>{let ok=norm(document.getElementById
 function build4(){document.getElementById('four').innerHTML=q4.map((q,i)=>'<div class="pair"><b><span class="num">'+(i+1)+'</span> '+q[0]+'</b><p>① '+q[1]+' → ② '+q[2]+'</p><p>Antes de <input id="s4a'+i+'" placeholder="infinitivo">, <input id="s4b'+i+'" placeholder="verbo conjugado">.</p><p>Después de <input id="s4c'+i+'" placeholder="infinitivo">, <input id="s4d'+i+'" placeholder="verbo conjugado">.</p><span id="f4'+i+'"></span></div>').join('')}
 function check4(){let n=0;q4.forEach((q,i)=>{let actual=['a','b','c','d'].map(k=>norm(document.getElementById('s4'+k+i).value)),expected=q.slice(3).map(norm),ok=actual.every((v,j)=>v===expected[j]);n+=ok;feedback(document.getElementById('f4'+i),ok,'Antes de '+q[3]+', '+q[4]+'. Después de '+q[5]+', '+q[6]+'.')});document.getElementById('result4').textContent=n+'/3 correctas'}
 build1();build2();build3();build4();
-</script></body></html>
+</script><script src="../navigation.js"></script></body></html>
