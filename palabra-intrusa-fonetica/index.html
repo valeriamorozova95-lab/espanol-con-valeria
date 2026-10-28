@@ -24,4 +24,4 @@ rows.forEach((row,i)=>{const card=document.createElement("section");card.classNa
 function update(){document.getElementById("result").textContent="Выбрано: "+Object.keys(selected).length+" из "+rows.length}
 document.getElementById("check").onclick=()=>{let score=0;cards.forEach((x,i)=>{x.box.querySelectorAll("button").forEach((b,j)=>{b.classList.remove("selected","ok","bad");if(j===x.row[1])b.classList.add("ok");if(selected[i]===j&&j!==x.row[1])b.classList.add("bad")});const ok=selected[i]===x.row[1];x.card.classList.toggle("correct",ok);x.card.classList.toggle("wrong",selected[i]!==undefined&&!ok);if(ok)score++});document.getElementById("result").textContent="Результат: "+score+" из "+rows.length};
 document.getElementById("reset").onclick=()=>{selected={};cards.forEach(x=>{x.card.classList.remove("correct","wrong");x.box.querySelectorAll("button").forEach(b=>b.classList.remove("selected","ok","bad"))});update();scrollTo({top:0,behavior:"smooth"})};
-</script></body></html>
+</script><script src="../navigation.js"></script></body></html>

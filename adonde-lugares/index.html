@@ -29,4 +29,4 @@ const e4=document.getElementById("ex4");fixes.forEach((x,i)=>{const d=document.c
 function norm(s){return s.toLowerCase().trim().replace(/[¡!¿?.,]/g,"").replace(/\s+/g," ")}
 function checkTexts(){let score=0;e4.querySelectorAll(".task").forEach(t=>{const inp=t.querySelector("input"),ok=norm(inp.value)===norm(inp.dataset.answer);t.classList.toggle("ok",ok);t.classList.toggle("bad",!ok);const f=t.querySelector(".feedback");f.className="feedback "+(ok?"ok":"bad");f.textContent=ok?"✓ Правильно":"Правильно: "+inp.dataset.answer;if(ok)score++});r4.textContent="Результат: "+score+" из "+fixes.length}
 function reset4(){e4.querySelectorAll("input").forEach(x=>x.value="");e4.querySelectorAll(".task").forEach(x=>x.classList.remove("ok","bad"));e4.querySelectorAll(".feedback").forEach(x=>x.textContent="");r4.textContent=""}
-</script></body></html>
+</script><script src="../navigation.js"></script></body></html>

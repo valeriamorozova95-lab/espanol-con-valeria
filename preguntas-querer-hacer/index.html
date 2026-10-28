@@ -100,5 +100,5 @@ document.getElementById('objects').innerHTML=objects.map((o,i)=>'<article class=
 document.getElementById('objects').addEventListener('click',e=>{const b=e.target.closest('[data-reveal]');if(!b)return;const target=document.getElementById('obj-'+b.dataset.reveal);target.classList.toggle('show');b.textContent=target.classList.contains('show')?'Ocultar ejemplo':'Ver ejemplo'});
 renderOpen();
 </script>
-</body>
+<script src="../navigation.js"></script></body>
 </html>

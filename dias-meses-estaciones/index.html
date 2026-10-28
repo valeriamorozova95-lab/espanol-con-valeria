@@ -74,4 +74,4 @@ function resetPicks(id,res){let root=document.getElementById(id);root.querySelec
 function checkTF(){checkPicks('tf','tf-result')} function resetTF(){resetPicks('tf','tf-result')}
 function mark(t,ok,msg){t.classList.toggle('ok',ok);t.classList.toggle('bad',!ok);let f=t.querySelector('.feedback');f.className='feedback '+(ok?'ok':'bad');f.textContent=msg}
 function clear(t){t.classList.remove('ok','bad');let f=t.querySelector('.feedback');if(f)f.textContent=''}
-</script></body></html>
+</script><script src="../navigation.js"></script></body></html>
