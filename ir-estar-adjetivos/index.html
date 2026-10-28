@@ -57,4 +57,4 @@ function resetBlock(id){const root=document.getElementById(id);root.querySelecto
 function resetInputs(id,res){const root=document.getElementById(id);root.querySelectorAll('input').forEach(x=>x.value='');root.querySelectorAll('.task').forEach(x=>x.classList.remove('ok','bad'));root.querySelectorAll('.feedback').forEach(x=>x.textContent='');document.getElementById(res).textContent=''}
 const cardSets=[['yo','parque','grande'],['tú','escuela','pequeña'],['Ana','cafetería','bonita'],['Pablo','museo','nuevo'],['nosotros','restaurante','grande'],['Ana y Pablo','tienda','pequeña']];let last=-1;function newCards(){let i;do{i=Math.floor(Math.random()*cardSets.length)}while(i===last);last=i;const x=cardSets[i];document.getElementById('who').textContent=x[0];document.getElementById('where').textContent=x[1];document.getElementById('adj').textContent=x[2]}
 </script>
-</body></html>
+<script src="../navigation.js"></script></body></html>
