@@ -1,3 +1,4 @@
+const lessonNav=document.createElement('script');lessonNav.src='../navigation.js';document.head.appendChild(lessonNav);
 const BASE='/espanol-con-valeria';
 const activities=[
  ['ser-estar-ir-tener','Ser, estar, ir y tener','Выбери формы и распредели местоимения','◆'],
