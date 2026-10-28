@@ -38,4 +38,4 @@ function checkTexts(){let score=0;document.querySelectorAll("#ex2 .task").forEac
 function resetBlock(id){const root=document.getElementById(id);root.querySelectorAll("select").forEach(x=>x.value="");root.querySelectorAll("input").forEach(x=>x.value="");root.querySelectorAll(".task").forEach(x=>x.classList.remove("ok","bad"));root.querySelectorAll(".feedback").forEach(x=>x.textContent="");document.getElementById(id+"-result").textContent=""}
 const places=["el café","el hotel","el parque","el museo","el restaurante","la escuela","la farmacia","el supermercado"];let last=-1;
 function secretPlace(){let i;do{i=Math.floor(Math.random()*places.length)}while(i===last);last=i;document.getElementById("secret").textContent=places[i];document.getElementById("secretBtn").textContent="Другое место"}
-</script></body></html>
+</script><script src="../navigation.js"></script></body></html>
