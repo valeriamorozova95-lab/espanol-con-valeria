@@ -208,10 +208,10 @@ main{position:relative;z-index:1}
 /* Atmosphere: restrained handmade decoration */
 .hero{isolation:isolate}
 .papel-garland{position:absolute;z-index:3;top:0;left:5%;right:5%;height:65px;display:flex;justify-content:space-evenly;align-items:flex-start;pointer-events:none;border-top:2px solid #f3d8a3aa}
-.papel-garland i{--flag:#ba6947;display:block;position:relative;width:clamp(22px,4vw,43px);height:clamp(29px,5vw,51px);background:var(--flag);opacity:.92;clip-path:polygon(0 0,100% 0,100% 87%,85% 95%,70% 87%,55% 95%,40% 87%,25% 95%,10% 87%,0 95%);transform-origin:50% 0;animation:papel-sway 6s ease-in-out infinite alternate}
-.papel-garland i:nth-child(3n+2){--flag:#dfaa5d;animation-delay:-2s}.papel-garland i:nth-child(3n){--flag:#52796c;animation-delay:-4s}
+.papel-garland i{--flag:#ba6947;display:block;position:relative;width:clamp(22px,4vw,43px);height:clamp(29px,5vw,51px);background:var(--flag);opacity:.92;clip-path:polygon(0 0,100% 0,100% 87%,85% 95%,70% 87%,55% 95%,40% 87%,25% 95%,10% 87%,0 95%);transform-origin:50% 0;animation:papel-sway 3.1s ease-in-out infinite alternate}
+.papel-garland i:nth-child(3n+2){--flag:#dfaa5d;animation-delay:-1.2s}.papel-garland i:nth-child(3n){--flag:#52796c;animation-delay:-2.3s}
 .papel-garland i::after{content:"✧";position:absolute;inset:15% 0 0;text-align:center;color:#fbead2;font-size:clamp(16px,2vw,25px);opacity:.85}
-@keyframes papel-sway{from{transform:rotate(-3deg)}to{transform:rotate(3deg)}}
+@keyframes papel-sway{0%{transform:rotate(-9deg) skewX(-2deg) scaleX(.94)}25%{transform:rotate(5deg) skewX(3deg) scaleX(1)}50%{transform:rotate(10deg) skewX(-3deg) scaleX(.93)}75%{transform:rotate(-4deg) skewX(2deg) scaleX(.98)}100%{transform:rotate(-9deg) skewX(-2deg) scaleX(.94)}}
 .petal-divider{height:25px;display:flex;justify-content:center;align-items:center;gap:14px;pointer-events:none;opacity:.75}
 .petal-divider i{display:block;width:14px;height:8px;border-radius:90% 10% 90% 10%;background:#d98b32;transform:rotate(25deg)}
 .petal-divider i:nth-child(even){width:10px;height:6px;background:#f2b84b;transform:rotate(-33deg) translateY(4px)}
