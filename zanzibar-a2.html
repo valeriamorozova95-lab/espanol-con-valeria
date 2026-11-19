@@ -12,6 +12,87 @@ html[data-theme=dark] body{background:#171f1b;color:var(--ink)}html[data-theme=d
 @media(max-width:650px){.place{grid-template-columns:1fr;gap:12px}.place img{height:230px}th,td{padding:7px 4px}.topin .tag{display:none}}
 .grammar-scroll{overflow-x:auto}.grammar-scroll table{min-width:640px}
 .place h5{font-size:1rem;margin:14px 0 4px}.place-glossary{list-style:none;padding:0;margin:0 0 10px}.place-glossary li{margin:0 0 4px}
+
+/* Typography and layout for the Zanzibar lesson. */
+body {
+  --lesson-font: system-ui, "Segoe UI", sans-serif;
+  font-family: var(--lesson-font);
+  line-height: 1.6;
+}
+.page, .topin, .page button, .page select, .topin button { font-family: var(--lesson-font); }
+.page .hero h1, .page .lesson-section :is(h2,h3,h4,h5) {
+  font-family: var(--lesson-font);
+  font-weight: 800;
+  letter-spacing: -.025em;
+  line-height: 1.2;
+}
+.page .hero h1 { font-size: clamp(2.15rem, 5vw, 3.9rem); }
+.page .lesson-section h3 { font-size: clamp(1.25rem, 2.4vw, 1.6rem); }
+.page .lesson-section strong { font-weight: 750; }
+.match-grid {
+  display: grid;
+  grid-template-columns: minmax(0, .9fr) minmax(0, 1.2fr);
+  gap: clamp(12px, 2vw, 24px);
+  align-items: start;
+  margin: 20px 0 28px;
+}
+.match-card {
+  min-width: 0;
+  padding: clamp(12px, 2vw, 22px);
+  background: var(--paper);
+  border: 1px solid #b9854d70;
+  border-radius: 12px;
+}
+#places .match-card h4 {
+  margin: 0 0 14px;
+  font-size: 1rem;
+  color: var(--petrol);
+}
+.match-card ol { list-style: none; padding: 0; margin: 0; }
+.match-card li { margin: 0; }
+.match-card li + li { border-top: 1px solid #b9854d4d; }
+.match-card :is(.answer-row, label) {
+  display: grid;
+  gap: 10px;
+  align-items: center;
+  padding: 9px 0;
+}
+.match-card .answer-row { grid-template-columns: 2rem minmax(0, 1fr); }
+.match-card .matching label { grid-template-columns: 2rem minmax(0, 1fr) 4rem; }
+.match-marker {
+  display: grid;
+  place-items: center;
+  width: 2rem;
+  height: 2rem;
+  border-radius: .45rem;
+  background: #e9ddc3;
+  color: #24453b;
+  font-weight: 750;
+}
+.matching select {
+  width: 100%;
+  min-height: 2.5rem;
+  border: 1px solid var(--ochre);
+  border-radius: 6px;
+  background: var(--paper);
+  color: var(--ink);
+  padding: 4px 6px;
+}
+.match-grid .check-button {
+  margin-top: 12px;
+  background: var(--petrol);
+  color: #fffaf0;
+  border-color: transparent;
+  font-weight: 700;
+}
+.match-grid :is(button, select):focus-visible { outline: 2px solid var(--ochre); outline-offset: 3px; }
+.match-grid .match-result { margin: 8px 0 0; }
+.match-grid .match-result:empty { margin: 0; min-height: 0; }
+html[data-theme=dark] .match-marker { background: #394d40; color: #f6e8d2; }
+html[data-theme=dark] .match-grid .check-button { color: #232b25; }
+@media (max-width: 760px) {
+  .match-grid { grid-template-columns: 1fr; }
+}
 </style>
 </head>
 <body>
@@ -28,8 +109,10 @@ html[data-theme=dark] body{background:#171f1b;color:var(--ink)}html[data-theme=d
 <section class="panel lesson-section" id="words"><h2>1. Ocho palabras, ocho frases</h2><p class="time">13 мин</p><p class="instruction">Устно составить по одному предложению о поездке с каждым из восьми слов. Использовать опорные глаголы из таблицы. При необходимости добавить <em>no</em>: <em>No <strong>fui</strong> al mercado.</em></p><table><thead><tr><th scope="col">Слово</th><th scope="col">Опорные глаголы и примеры</th></tr></thead><tbody><tr><th scope="row"><span lang="es">el mar</span><br>море</th><td><span lang="es"><strong>nadar</strong> → <strong>Nadé</strong> en el mar. / <strong>ver</strong> → <strong>Vi</strong> el mar desde…</span></td></tr><tr><th scope="row"><span lang="es">el hotel</span><br>отель</th><td><span lang="es"><strong>alojarse</strong> → <strong>Me alojé</strong> en un hotel. / <strong>desayunar</strong> → <strong>Desayuné</strong> en el hotel.</span></td></tr><tr><th scope="row"><span lang="es">el calor</span><br>жара</th><td><span lang="es"><strong>hacer</strong> → <strong>Hizo</strong> mucho calor. / No <strong>hizo</strong> mucho calor.</span></td></tr><tr><th scope="row"><span lang="es">la comida</span><br>еда</th><td><span lang="es"><strong>probar</strong> → <strong>Probé</strong> la comida local. / <strong>gustar</strong> → <strong>Me gustó</strong> la comida.</span></td></tr><tr><th scope="row"><span lang="es">el avión</span><br>самолёт</th><td><span lang="es"><strong>viajar</strong> → <strong>Viajé</strong> en avión. / <strong>dormir</strong> → <strong>Dormí</strong> en el avión.</span></td></tr><tr><th scope="row"><span lang="es">la playa</span><br>пляж</th><td><span lang="es"><strong>ir</strong> → <strong>Fui</strong> a la playa. / <strong>pasear</strong> → <strong>Paseé</strong> por la playa.</span></td></tr><tr><th scope="row"><span lang="es">una excursión</span><br>экскурсия</th><td><span lang="es"><strong>hacer</strong> → <strong>Hice</strong> una excursión a… / No <strong>hice</strong> ninguna excursión.</span></td></tr><tr><th scope="row"><span lang="es">un mercado</span><br>рынок</th><td><span lang="es"><strong>visitar</strong> → <strong>Visité</strong> un mercado. / <strong>comprar</strong> → <strong>Compré</strong>… en un mercado.</span></td></tr></tbody></table></section>
 <section class="panel lesson-section" id="places"><h2>2. Lugares y actividades en Zanzíbar</h2><p class="time">20 мин</p><h3 lang="es">A. Preguntas y respuestas</h3>
 <p class="instruction">Соединить вопросы с ответами. Затем устно ответить на те же вопросы о своей поездке.</p>
-<ol lang="es" type="A"><li><strong>Probé</strong> un plato con pescado.</li><li><strong>Visité</strong> un mercado.</li><li><strong>Viajé</strong> con una amiga.</li><li><strong>Hice</strong> una excursión.</li><li><strong>Me alojé</strong> en un hotel.</li></ol>
-<form id="matching"><ol class="matching"><li><label><span lang="es">¿Con quién <strong>viajaste</strong>?</span><select required><option value="">Выбор ответа</option><option>A</option><option>B</option><option>C</option><option>D</option><option>E</option></select></label></li><li><label><span lang="es">¿Dónde <strong>te alojaste</strong>?</span><select required><option value="">Выбор ответа</option><option>A</option><option>B</option><option>C</option><option>D</option><option>E</option></select></label></li><li><label><span lang="es">¿Qué lugares <strong>visitaste</strong>?</span><select required><option value="">Выбор ответа</option><option>A</option><option>B</option><option>C</option><option>D</option><option>E</option></select></label></li><li><label><span lang="es">¿Qué <strong>probaste</strong>?</span><select required><option value="">Выбор ответа</option><option>A</option><option>B</option><option>C</option><option>D</option><option>E</option></select></label></li><li><label><span lang="es">¿Qué <strong>hiciste</strong> el primer día?</span><select required><option value="">Выбор ответа</option><option>A</option><option>B</option><option>C</option><option>D</option><option>E</option></select></label></li></ol><button class="check-button">Проверить</button><p class="match-result" id="result" aria-live="polite"></p></form>
+<div class="match-grid">
+<div class="match-card"><h4>Варианты ответов</h4><ol lang="es" type="A"><li class="answer-row"><span class="match-marker" aria-hidden="true">A</span><span><strong>Probé</strong> un plato con pescado.</span></li><li class="answer-row"><span class="match-marker" aria-hidden="true">B</span><span><strong>Visité</strong> un mercado.</span></li><li class="answer-row"><span class="match-marker" aria-hidden="true">C</span><span><strong>Viajé</strong> con una amiga.</span></li><li class="answer-row"><span class="match-marker" aria-hidden="true">D</span><span><strong>Hice</strong> una excursión.</span></li><li class="answer-row"><span class="match-marker" aria-hidden="true">E</span><span><strong>Me alojé</strong> en un hotel.</span></li></ol></div>
+<form id="matching" class="match-card"><h4>Вопросы</h4><ol class="matching"><li><label><span class="match-marker" aria-hidden="true">1</span><span lang="es">¿Con quién <strong>viajaste</strong>?</span><select required><option value="">–</option><option>A</option><option>B</option><option>C</option><option>D</option><option>E</option></select></label></li><li><label><span class="match-marker" aria-hidden="true">2</span><span lang="es">¿Dónde <strong>te alojaste</strong>?</span><select required><option value="">–</option><option>A</option><option>B</option><option>C</option><option>D</option><option>E</option></select></label></li><li><label><span class="match-marker" aria-hidden="true">3</span><span lang="es">¿Qué lugares <strong>visitaste</strong>?</span><select required><option value="">–</option><option>A</option><option>B</option><option>C</option><option>D</option><option>E</option></select></label></li><li><label><span class="match-marker" aria-hidden="true">4</span><span lang="es">¿Qué <strong>probaste</strong>?</span><select required><option value="">–</option><option>A</option><option>B</option><option>C</option><option>D</option><option>E</option></select></label></li><li><label><span class="match-marker" aria-hidden="true">5</span><span lang="es">¿Qué <strong>hiciste</strong> el primer día?</span><select required><option value="">–</option><option>A</option><option>B</option><option>C</option><option>D</option><option>E</option></select></label></li></ol><button class="check-button">Проверить</button><p class="match-result" id="result" aria-live="polite"></p></form>
+</div>
 <h3 lang="es">B. Cinco fotos de Zanzíbar</h3>
 <p class="instruction">Рассмотреть фотографии и устно ответить на вопросы. Использовать слова и глаголы под каждой фотографией.</p>
 <p lang="es"><em>Sí, fui a… Allí vi… / No, no fui, pero quiero ir. / Quiero ver…</em></p>
