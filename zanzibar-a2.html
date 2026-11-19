@@ -31,7 +31,7 @@ body {
 .page .lesson-section strong { font-weight: 750; }
 .match-grid {
   display: grid;
-  grid-template-columns: minmax(0, .9fr) minmax(0, 1.2fr);
+  grid-template-columns: minmax(0, 1.2fr) minmax(0, .9fr);
   gap: clamp(12px, 2vw, 24px);
   align-items: start;
   margin: 20px 0 28px;
@@ -92,6 +92,7 @@ html[data-theme=dark] .match-marker { background: #394d40; color: #f6e8d2; }
 html[data-theme=dark] .match-grid .check-button { color: #232b25; }
 @media (max-width: 760px) {
   .match-grid { grid-template-columns: 1fr; }
+  .match-grid > div { grid-row: 1; }
 }
 </style>
 </head>
@@ -110,8 +111,8 @@ html[data-theme=dark] .match-grid .check-button { color: #232b25; }
 <section class="panel lesson-section" id="places"><h2>2. Lugares y actividades en Zanzíbar</h2><p class="time">20 мин</p><h3 lang="es">A. Preguntas y respuestas</h3>
 <p class="instruction">Соединить вопросы с ответами. Затем устно ответить на те же вопросы о своей поездке.</p>
 <div class="match-grid">
-<div class="match-card"><h4>Варианты ответов</h4><ol lang="es" type="A"><li class="answer-row"><span class="match-marker" aria-hidden="true">A</span><span><strong>Probé</strong> un plato con pescado.</span></li><li class="answer-row"><span class="match-marker" aria-hidden="true">B</span><span><strong>Visité</strong> un mercado.</span></li><li class="answer-row"><span class="match-marker" aria-hidden="true">C</span><span><strong>Viajé</strong> con una amiga.</span></li><li class="answer-row"><span class="match-marker" aria-hidden="true">D</span><span><strong>Hice</strong> una excursión.</span></li><li class="answer-row"><span class="match-marker" aria-hidden="true">E</span><span><strong>Me alojé</strong> en un hotel.</span></li></ol></div>
 <form id="matching" class="match-card"><h4>Вопросы</h4><ol class="matching"><li><label><span class="match-marker" aria-hidden="true">1</span><span lang="es">¿Con quién <strong>viajaste</strong>?</span><select required><option value="">–</option><option>A</option><option>B</option><option>C</option><option>D</option><option>E</option></select></label></li><li><label><span class="match-marker" aria-hidden="true">2</span><span lang="es">¿Dónde <strong>te alojaste</strong>?</span><select required><option value="">–</option><option>A</option><option>B</option><option>C</option><option>D</option><option>E</option></select></label></li><li><label><span class="match-marker" aria-hidden="true">3</span><span lang="es">¿Qué lugares <strong>visitaste</strong>?</span><select required><option value="">–</option><option>A</option><option>B</option><option>C</option><option>D</option><option>E</option></select></label></li><li><label><span class="match-marker" aria-hidden="true">4</span><span lang="es">¿Qué <strong>probaste</strong>?</span><select required><option value="">–</option><option>A</option><option>B</option><option>C</option><option>D</option><option>E</option></select></label></li><li><label><span class="match-marker" aria-hidden="true">5</span><span lang="es">¿Qué <strong>hiciste</strong> el primer día?</span><select required><option value="">–</option><option>A</option><option>B</option><option>C</option><option>D</option><option>E</option></select></label></li></ol><button class="check-button">Проверить</button><p class="match-result" id="result" aria-live="polite"></p></form>
+<div class="match-card"><h4>Варианты ответов</h4><ol lang="es" type="A"><li class="answer-row"><span class="match-marker" aria-hidden="true">A</span><span><strong>Probé</strong> un plato con pescado.</span></li><li class="answer-row"><span class="match-marker" aria-hidden="true">B</span><span><strong>Visité</strong> un mercado.</span></li><li class="answer-row"><span class="match-marker" aria-hidden="true">C</span><span><strong>Viajé</strong> con una amiga.</span></li><li class="answer-row"><span class="match-marker" aria-hidden="true">D</span><span><strong>Hice</strong> una excursión.</span></li><li class="answer-row"><span class="match-marker" aria-hidden="true">E</span><span><strong>Me alojé</strong> en un hotel.</span></li></ol></div>
 </div>
 <h3 lang="es">B. Cinco fotos de Zanzíbar</h3>
 <p class="instruction">Рассмотреть фотографии и устно ответить на вопросы. Использовать слова и глаголы под каждой фотографией.</p>
