@@ -4,30 +4,59 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Imperativo afirmativo · A2 — Español con Valeria</title>
-<style>:root{--bg:#fbf7ef;--paper:#fffdf7;--ink:#292d25;--muted:#6e7067;--line:#e8e0d4;--green:#274d3b;--terra:#b66a43}*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.65 system-ui,sans-serif}header{padding:18px 5%;background:var(--paper);border-bottom:1px solid var(--line);display:flex;justify-content:space-between;gap:15px}a{color:var(--green)}header a{font:22px Georgia,serif;text-decoration:none}main{max-width:1050px;margin:auto;padding:25px 18px 70px}.hero{background:linear-gradient(90deg,#173b2fe8,#173b2f80),url('../assets/assets/hero/hero-1.jpg') center/cover;color:white;padding:55px 35px}.hero h1{font:italic clamp(35px,6vw,65px) Georgia,serif;margin:8px 0}section{background:var(--paper);border:1px solid var(--line);padding:clamp(20px,4vw,35px);margin:22px 0}h2{font:normal 32px Georgia,serif;color:var(--green);margin:0 0 12px}h3{color:var(--terra)}.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}.box{padding:20px;background:#f6f0e6;border-left:4px solid var(--terra)}.purple{border-color:#8570a7}.orange{border-color:#d18b55}.box p{margin:8px 0}.example{background:#f6f0e6;padding:15px;margin:10px 0;border-radius:4px}.hint{color:var(--muted)}table{width:100%;border-collapse:collapse}td,th{border-bottom:1px solid var(--line);padding:10px;text-align:left}select,input,textarea{font:inherit;padding:8px;border:1px solid #bbb4a9;border-radius:4px;background:var(--paper);color:var(--ink);max-width:100%}input{width:135px}textarea{display:block;width:100%;min-height:90px;margin:10px 0}button{font:inherit;cursor:pointer;border:0;background:var(--green);color:white;padding:10px 16px;border-radius:4px;margin:8px 8px 8px 0}.secondary{background:transparent;color:var(--ink);border:1px solid var(--line)}.example p{line-height:2.7}.example input{vertical-align:middle}.row{padding:12px 0;border-bottom:1px solid var(--line)}.ok{color:#318653}.bad{color:#b65d45}.tag{font-size:12px;letter-spacing:.15em;text-transform:uppercase}.comparison{overflow-x:auto}html[data-theme=dark]{--bg:#111715;--paper:#1c2420;--ink:#f3e6d2;--muted:#b8b2a5;--line:#3b4038;--green:#eac28a;--terra:#dca16d}html[data-theme=dark] .box,html[data-theme=dark] .example{background:#29332c}@media(max-width:650px){.grid{grid-template-columns:1fr}.hero{padding:35px 22px}header a{font-size:17px}}
-
-header { align-items:center; flex-wrap:wrap }
-header button { margin:0 }
-.hero p { margin:0 }
-.table-wrap { overflow-x:auto }
-td,th { vertical-align:top }
-.practice-grid { padding:0; margin:0; list-style:none }
-.prompt { display:flex; flex-wrap:wrap; align-items:center; justify-content:space-between; gap:8px 16px; height:100% }
-.prompt input { flex:0 0 135px }
-@media(max-width:650px) {
-  .prompt input { flex:1 1 100%; width:100% }
+<link rel="stylesheet" href="../style.css">
+<style>
+.page{padding-top:32px}
+.section{margin:30px 0 44px}
+.sec-head{display:flex;align-items:center;gap:12px;margin-bottom:14px}
+.sec-head h2{margin:0;color:var(--petrol);font-size:1.55rem}
+.number{display:grid;place-items:center;flex-shrink:0;width:38px;height:38px;border:2px solid var(--gold);border-radius:50%;background:var(--wine);color:#fff8e7;font-weight:800}
+.sub{font-size:12px;letter-spacing:.06em;color:var(--ochre);font-weight:700;text-transform:uppercase}
+.instruction,.grammar{padding:15px 18px;background:#fff1d7;border-left:5px solid var(--ochre);line-height:1.7;margin:16px 0}
+.question{margin:14px 0}
+.question p{margin:0 0 12px}
+.theme-toggle{padding:8px 12px;border:1px solid #b9854d;background:#fff8e9;color:var(--petrol);border-radius:4px;cursor:pointer}
+html[data-theme=dark]{color-scheme:dark;--paper:#232b25;--ink:#f3e6d2;--petrol:#e6bd7e;--wine:#e49e88;--ochre:#dba56c}
+html[data-theme=dark] body{background-color:#171f1b;color:var(--ink);background-image:none}
+html[data-theme=dark] .top{background:#26362d}
+html[data-theme=dark] .hero{background:linear-gradient(130deg,#294339,#182e28);color:#fff7e3}
+html[data-theme=dark] .panel,html[data-theme=dark] .task{background-color:var(--paper)}
+html[data-theme=dark] .instruction,html[data-theme=dark] .grammar,html[data-theme=dark] .conversation{background:#354035}
+html[data-theme=dark] .opt,html[data-theme=dark] .reveal,html[data-theme=dark] .btn,html[data-theme=dark] .theme-toggle{background:#35473b;color:#f3e6d2}
+html[data-theme=dark] .opt.selected{background:#e6bd7e;color:#182e28}
+html[data-theme=dark] .photo-credit,html[data-theme=dark] .footer{color:#d3c3aa}
+.sec-head h2{font-size:1.3rem}
+.table-wrap { overflow-x:auto; margin-bottom:18px }
+table { width:100%; border-collapse:collapse; line-height:1.5 }
+td,th { padding:10px 12px; text-align:left; vertical-align:top; border-bottom:1px solid #c49a68 }
+th { color:var(--petrol) }
+.practice-grid { list-style:none; padding:0; margin:0 }
+.prompt { display:block }
+.prompt span { display:block; font-weight:650; margin-bottom:12px }
+.prompt input {
+  font:inherit; color:inherit; border:1px solid #b9854d; border-radius:4px;
+  padding:9px 12px; width:min(100%,19rem); background:#fff8e9;
+}
+input:focus-visible,button:focus-visible { outline:3px solid var(--ochre); outline-offset:3px }
+html[data-theme=dark] .prompt input { background:#35473b }
+@media(max-width:650px){
+  .sec-head h2 { font-size:1.3rem }
+  .section.panel { padding:22px 18px }
+  .topin { flex-wrap:wrap; gap:12px }
+  .tag { font-size:12px }
   td,th { padding:8px }
 }
 </style>
 </head>
 <body>
-<header><a href="/espanol-con-valeria/">← Español con Valeria</a><button type="button" id="theme" class="secondary">☾ Noche</button></header>
-<main>
-<div class="hero"><span class="tag">GRAMÁTICA · A2 · 45 MIN</span><h1>Imperativo afirmativo</h1><p>Da instrucciones, consejos e indicaciones con <strong>tú</strong> y <strong>usted</strong>.</p></div>
+<header class="top"><div class="topin"><a class="brand" href="../"><span class="logo">V</span>Español con Valeria</a><span class="tag">A2 · IMPERATIVO</span><button type="button" class="theme-toggle" id="themeToggle" onclick="changeTheme()">☾ Noche</button></div></header>
+<main class="wrap page">
+<a class="back" style="color:var(--petrol)" href="../">← Todos los ejercicios</a>
+<section class="hero"><div class="sub" style="color:#e0eeba">GRAMÁTICA · A2 · 45 MIN</div><h1>Imperativo afirmativo</h1><p>Da instrucciones, consejos e indicaciones con <strong>tú</strong> y <strong>usted</strong>.</p></section>
 
-<section>
-<h2>Gramática</h2>
-<p>Usamos el <strong>imperativo afirmativo</strong> para dar instrucciones, consejos o indicaciones. Usamos <strong>tú</strong> en un trato familiar y <strong>usted</strong> en un trato formal o de cortesía.</p>
+<section class="section panel">
+<div class="sec-head"><h2>Gramática</h2></div>
+<p class="instruction">Usamos el <strong>imperativo afirmativo</strong> para dar instrucciones, consejos o indicaciones. Usamos <strong>tú</strong> en un trato familiar y <strong>usted</strong> en un trato formal o de cortesía.</p>
 <h3>Verbos regulares</h3>
 <div class="table-wrap"><table><thead><tr><th scope="col">Infinitivo</th><th scope="col">Tú</th><th scope="col">Usted</th></tr></thead><tbody><tr><td>habl<strong>ar</strong></td><td>habl<strong>a</strong></td><td>habl<strong>e</strong></td></tr>
 <tr><td>com<strong>er</strong></td><td>com<strong>e</strong></td><td>com<strong>a</strong></td></tr>
@@ -54,50 +83,50 @@ td,th { vertical-align:top }
 <tr><td>venir</td><td>ven</td><td>venga</td><td>Venga mañana a las diez.</td></tr></tbody></table></div>
 </section>
 
-<section>
-<h2>1. Completa las instrucciones</h2>
-<p>Completa cada frase con el imperativo afirmativo de <strong>tú</strong> del verbo entre paréntesis.</p>
+<section class="section panel">
+<div class="sec-head"><span class="number" aria-hidden="true">01</span><h2>Completa las instrucciones</h2></div>
+<p class="instruction">Completa cada frase con el imperativo afirmativo de <strong>tú</strong> del verbo entre paréntesis.</p>
 <ol class="practice-grid" role="list">
-<li class="example"><label class="prompt"><span>1. ______ la puerta, por favor. <em>(abrir)</em></span><input type="text" autocomplete="off" spellcheck="false"></label></li>
-<li class="example"><label class="prompt"><span>2. ______ tu número de teléfono aquí. <em>(escribir)</em></span><input type="text" autocomplete="off" spellcheck="false"></label></li>
-<li class="example"><label class="prompt"><span>3. ______ a la izquierda después del puente. <em>(girar)</em></span><input type="text" autocomplete="off" spellcheck="false"></label></li>
-<li class="example"><label class="prompt"><span>4. ______ la ventana antes de salir. <em>(cerrar)</em></span><input type="text" autocomplete="off" spellcheck="false"></label></li>
-<li class="example"><label class="prompt"><span>5. ______ una mesa para dos, por favor. <em>(pedir)</em></span><input type="text" autocomplete="off" spellcheck="false"></label></li>
-<li class="example"><label class="prompt"><span>6. ______ la palabra más despacio. <em>(repetir)</em></span><input type="text" autocomplete="off" spellcheck="false"></label></li>
-<li class="example"><label class="prompt"><span>7. ______ la mochila debajo de la silla. <em>(poner)</em></span><input type="text" autocomplete="off" spellcheck="false"></label></li>
-<li class="example"><label class="prompt"><span>8. ______ una foto del mapa. <em>(hacer)</em></span><input type="text" autocomplete="off" spellcheck="false"></label></li>
-<li class="example"><label class="prompt"><span>9. ______ a la estación en metro. <em>(ir)</em></span><input type="text" autocomplete="off" spellcheck="false"></label></li>
-<li class="example"><label class="prompt"><span>10. ______ por la puerta de la derecha. <em>(salir)</em></span><input type="text" autocomplete="off" spellcheck="false"></label></li>
-<li class="example"><label class="prompt"><span>11. ______ a mi casa después de clase. <em>(venir)</em></span><input type="text" autocomplete="off" spellcheck="false"></label></li>
-<li class="example"><label class="prompt"><span>12. ______ tu dirección en voz alta. <em>(decir)</em></span><input type="text" autocomplete="off" spellcheck="false"></label></li>
+<li class="question task"><label class="prompt"><span>1. ______ la puerta, por favor. <em>(abrir)</em></span><input type="text" autocomplete="off" spellcheck="false"></label></li>
+<li class="question task"><label class="prompt"><span>2. ______ tu número de teléfono aquí. <em>(escribir)</em></span><input type="text" autocomplete="off" spellcheck="false"></label></li>
+<li class="question task"><label class="prompt"><span>3. ______ a la izquierda después del puente. <em>(girar)</em></span><input type="text" autocomplete="off" spellcheck="false"></label></li>
+<li class="question task"><label class="prompt"><span>4. ______ la ventana antes de salir. <em>(cerrar)</em></span><input type="text" autocomplete="off" spellcheck="false"></label></li>
+<li class="question task"><label class="prompt"><span>5. ______ una mesa para dos, por favor. <em>(pedir)</em></span><input type="text" autocomplete="off" spellcheck="false"></label></li>
+<li class="question task"><label class="prompt"><span>6. ______ la palabra más despacio. <em>(repetir)</em></span><input type="text" autocomplete="off" spellcheck="false"></label></li>
+<li class="question task"><label class="prompt"><span>7. ______ la mochila debajo de la silla. <em>(poner)</em></span><input type="text" autocomplete="off" spellcheck="false"></label></li>
+<li class="question task"><label class="prompt"><span>8. ______ una foto del mapa. <em>(hacer)</em></span><input type="text" autocomplete="off" spellcheck="false"></label></li>
+<li class="question task"><label class="prompt"><span>9. ______ a la estación en metro. <em>(ir)</em></span><input type="text" autocomplete="off" spellcheck="false"></label></li>
+<li class="question task"><label class="prompt"><span>10. ______ por la puerta de la derecha. <em>(salir)</em></span><input type="text" autocomplete="off" spellcheck="false"></label></li>
+<li class="question task"><label class="prompt"><span>11. ______ a mi casa después de clase. <em>(venir)</em></span><input type="text" autocomplete="off" spellcheck="false"></label></li>
+<li class="question task"><label class="prompt"><span>12. ______ tu dirección en voz alta. <em>(decir)</em></span><input type="text" autocomplete="off" spellcheck="false"></label></li>
 </ol>
 </section>
 
-<section>
-<h2>2. Un día en mi ciudad</h2>
-<p>Tu profe visita tu ciudad por primera vez. Recomienda un lugar concreto y dale dos instrucciones o consejos para cada situación. Usa el imperativo afirmativo de <strong>tú</strong>. Puedes usar los verbos de la tabla o elegir otros.</p>
+<section class="section panel">
+<div class="sec-head"><span class="number" aria-hidden="true">02</span><h2>Un día en mi ciudad</h2></div>
+<p class="instruction">Tu profe visita tu ciudad por primera vez. Recomienda un lugar concreto y dale dos instrucciones o consejos para cada situación. Usa el imperativo afirmativo de <strong>tú</strong>. Puedes usar los verbos de la tabla o elegir otros.</p>
 <div class="table-wrap"><table><thead><tr><th scope="col">Tu profe pregunta…</th><th scope="col">Puedes usar…</th></tr></thead><tbody><tr><td>Estoy en el centro y quiero desayunar. ¿Adónde voy? ¿Qué puedo pedir?</td><td>ir a una cafetería · pedir un café · probar un plato típico</td></tr>
 <tr><td>Quiero visitar un museo. ¿Qué museo me recomiendas? ¿Cómo llego?</td><td>tomar el autobús · caminar dos calles · girar a la derecha · comprar la entrada por internet</td></tr>
 <tr><td>Tengo una hora libre antes de volver al hotel. ¿Qué puedo hacer cerca de aquí?</td><td>ir a un parque · dar un paseo · hacer una foto · volver por la plaza</td></tr></tbody></table></div>
 </section>
 
-<section>
-<h2>3. Corrige el mensaje</h2>
-<p>Un amigo quiere darte instrucciones en un mensaje, pero ha usado el presente de indicativo. Cambia el verbo en negrita al imperativo afirmativo de <strong>tú</strong>.</p>
+<section class="section panel">
+<div class="sec-head"><span class="number" aria-hidden="true">03</span><h2>Corrige el mensaje</h2></div>
+<p class="instruction">Un amigo quiere darte instrucciones en un mensaje, pero ha usado el presente de indicativo. Cambia el verbo en negrita al imperativo afirmativo de <strong>tú</strong>.</p>
 <ol class="practice-grid" role="list">
-<li class="example"><label class="prompt"><span>1. <strong>Haces</strong> una lista antes de salir.</span><input type="text" autocomplete="off" spellcheck="false"></label></li>
-<li class="example"><label class="prompt"><span>2. <strong>Pones</strong> el móvil en la mochila.</span><input type="text" autocomplete="off" spellcheck="false"></label></li>
-<li class="example"><label class="prompt"><span>3. <strong>Giras</strong> a la izquierda al salir del metro.</span><input type="text" autocomplete="off" spellcheck="false"></label></li>
-<li class="example"><label class="prompt"><span>4. <strong>Dices</strong> tu nombre en recepción.</span><input type="text" autocomplete="off" spellcheck="false"></label></li>
-<li class="example"><label class="prompt"><span>5. <strong>Vienes</strong> a mi casa a las siete.</span><input type="text" autocomplete="off" spellcheck="false"></label></li>
-<li class="example"><label class="prompt"><span>6. <strong>Cierras</strong> la puerta con llave.</span><input type="text" autocomplete="off" spellcheck="false"></label></li>
-<li class="example"><label class="prompt"><span>7. <strong>Pides</strong> la cuenta antes de salir.</span><input type="text" autocomplete="off" spellcheck="false"></label></li>
-<li class="example"><label class="prompt"><span>8. <strong>Vas</strong> a la farmacia de la esquina.</span><input type="text" autocomplete="off" spellcheck="false"></label></li>
-<li class="example"><label class="prompt"><span>9. <strong>Sales</strong> por la puerta principal.</span><input type="text" autocomplete="off" spellcheck="false"></label></li>
-<li class="example"><label class="prompt"><span>10. <strong>Tienes</strong> cuidado al cruzar la calle.</span><input type="text" autocomplete="off" spellcheck="false"></label></li>
+<li class="question task"><label class="prompt"><span>1. <strong>Haces</strong> una lista antes de salir.</span><input type="text" autocomplete="off" spellcheck="false"></label></li>
+<li class="question task"><label class="prompt"><span>2. <strong>Pones</strong> el móvil en la mochila.</span><input type="text" autocomplete="off" spellcheck="false"></label></li>
+<li class="question task"><label class="prompt"><span>3. <strong>Giras</strong> a la izquierda al salir del metro.</span><input type="text" autocomplete="off" spellcheck="false"></label></li>
+<li class="question task"><label class="prompt"><span>4. <strong>Dices</strong> tu nombre en recepción.</span><input type="text" autocomplete="off" spellcheck="false"></label></li>
+<li class="question task"><label class="prompt"><span>5. <strong>Vienes</strong> a mi casa a las siete.</span><input type="text" autocomplete="off" spellcheck="false"></label></li>
+<li class="question task"><label class="prompt"><span>6. <strong>Cierras</strong> la puerta con llave.</span><input type="text" autocomplete="off" spellcheck="false"></label></li>
+<li class="question task"><label class="prompt"><span>7. <strong>Pides</strong> la cuenta antes de salir.</span><input type="text" autocomplete="off" spellcheck="false"></label></li>
+<li class="question task"><label class="prompt"><span>8. <strong>Vas</strong> a la farmacia de la esquina.</span><input type="text" autocomplete="off" spellcheck="false"></label></li>
+<li class="question task"><label class="prompt"><span>9. <strong>Sales</strong> por la puerta principal.</span><input type="text" autocomplete="off" spellcheck="false"></label></li>
+<li class="question task"><label class="prompt"><span>10. <strong>Tienes</strong> cuidado al cruzar la calle.</span><input type="text" autocomplete="off" spellcheck="false"></label></li>
 </ol>
 </section>
 </main>
-<script>const b=document.querySelector("#theme");function set(t){document.documentElement.dataset.theme=t;b.textContent=t==="dark"?"☀ Día":"☾ Noche";localStorage.setItem("ecv-theme",t)}set(localStorage.getItem("ecv-theme")==="dark"?"dark":"light");b.onclick=()=>set(document.documentElement.dataset.theme==="dark"?"light":"dark")</script>
+<script>function setTheme(t){document.documentElement.dataset.theme=t;document.getElementById('themeToggle').textContent=t==='dark'?'☀ Día':'☾ Noche';try{localStorage.setItem('ecv-theme',t)}catch(e){}}function changeTheme(){setTheme(document.documentElement.dataset.theme==='dark'?'light':'dark')}try{setTheme(localStorage.getItem('ecv-theme')==='dark'?'dark':'light')}catch(e){setTheme('light')}</script>
 </body>
 </html>
