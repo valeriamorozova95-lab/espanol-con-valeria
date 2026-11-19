@@ -4,162 +4,79 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Imperativo afirmativo · A2 — Español con Valeria</title>
-<style>
-:root {
-  color-scheme: light;
-  --bg:#f6f0e6; --paper:#fffcf6; --ink:#29332d; --muted:#59635b;
-  --line:#e4dacb; --green:#28513f; --terra:#954829;
-  --tint:#eaf0e5; --warm:#f7e8d9; --field:#fffefa;
-  --shadow:0 12px 35px #563d2110;
-}
-html[data-theme="dark"] {
-  color-scheme:dark;
-  --bg:#141b17; --paper:#1d2721; --ink:#f2e9dc; --muted:#c1c8bd;
-  --line:#405044; --green:#c4dec6; --terra:#f0ba92;
-  --tint:#25392e; --warm:#3b2d24; --field:#171f1a;
-  --shadow:0 12px 35px #0003;
-}
-* { box-sizing:border-box }
-body {
-  margin:0; color:var(--ink); background:var(--bg);
-  font:1rem/1.65 system-ui,sans-serif;
-}
-header {
-  display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap;
-  gap:10px 20px; padding:15px max(20px,calc((100% - 1060px)/2));
-  background:var(--paper); border-bottom:1px solid var(--line);
-}
-header a {
-  color:var(--green); font:700 clamp(1rem,3vw,1.24rem) Georgia,serif;
-  text-decoration:none;
-}
-button {
-  border:1px solid var(--line); border-radius:100px; padding:7px 14px;
-  background:var(--tint); color:var(--green); font:600 .85rem/1.5 system-ui,sans-serif; cursor:pointer;
-}
-:focus-visible { outline:2px solid var(--terra); outline-offset:3px }
-main { max-width:1100px; margin:auto; padding:28px 20px 72px }
-.hero {
-  padding:clamp(26px,6vw,70px); border-radius:22px;
-  color:#fff7e8; background:radial-gradient(ellipse at 100% 0%,#436854,transparent 65%),#203f32;
-  box-shadow:var(--shadow);
-}
-.hero small { color:#f4cba7; font-size:.76rem; font-weight:700; letter-spacing:.14em }
-.hero h1 {
-  margin:10px 0 15px; font:italic clamp(2.35rem,7vw,5rem)/1.02 Georgia,serif;
-  letter-spacing:-.035em; text-wrap:balance;
-}
-.hero p { margin:0; color:#f2e6d3; max-width:40ch }
-section {
-  background:var(--paper); border:1px solid var(--line); border-radius:18px;
-  padding:clamp(19px,4vw,42px); margin-top:22px; box-shadow:var(--shadow);
-}
-h2 {
-  margin:0 0 14px; color:var(--green);
-  font:clamp(1.75rem,4vw,2.55rem)/1.1 Georgia,serif; letter-spacing:-.025em;
-}
-h3 { color:var(--green); margin:30px 0 10px; font-size:1rem }
-section > p { color:var(--muted); max-width:73ch; margin:0 0 19px }
-section > ul {
-  display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:12px;
-  padding:0; margin:14px 0 0; list-style:none;
-}
-section > ul li { border-radius:10px; background:var(--tint); padding:15px }
-section > ul li + li { background:var(--warm) }
-section > ul em { display:block; margin-top:8px }
-.table-wrap { overflow-x:auto; border:1px solid var(--line); border-radius:10px }
-table { border-collapse:collapse; width:100%; font-size:.94rem }
-td,th { padding:10px 14px; text-align:left; vertical-align:top }
-th { background:var(--tint); color:var(--green) }
-td { border-top:1px solid var(--line) }
-.grammar-table td:nth-child(1 of .form-cell),
-.grammar-table th:nth-child(1 of .form-cell) { background:var(--tint); color:var(--green) }
-.grammar-table td:nth-child(2 of .form-cell),
-.grammar-table th:nth-child(2 of .form-cell) { background:var(--warm); color:var(--terra) }
-.grammar-table td.form-cell { font-weight:650 }
-.practice-grid {
-  display:grid; grid-template-columns:repeat(2,minmax(0,1fr));
-  gap:11px; margin:0; padding:0; list-style:none;
-}
-.prompt {
-  display:flex; flex-direction:column; justify-content:space-between; gap:10px;
-  height:100%; padding:13px 15px; border:1px solid var(--line);
-  border-radius:10px; background:var(--bg);
-}
-.prompt:focus-within { border-color:var(--terra) }
-.prompt input {
-  width:100%; min-height:42px; border:1px solid var(--line); border-radius:7px;
-  background:var(--field); color:var(--ink); padding:7px 10px; font:inherit;
-}
-.city-table th { width:50% }
-.city-table td:first-child { font-weight:650; color:var(--green) }
-@media(max-width:620px) {
-  main { padding:16px 12px 44px }
-  .hero { border-radius:16px }
-  section { margin-top:15px }
-  section > ul,.practice-grid { grid-template-columns:1fr }
-  td,th { padding:8px; overflow-wrap:break-word }
-  table { font-size:.88rem }
+<style>:root{--bg:#fbf7ef;--paper:#fffdf7;--ink:#292d25;--muted:#6e7067;--line:#e8e0d4;--green:#274d3b;--terra:#b66a43}*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.65 system-ui,sans-serif}header{padding:18px 5%;background:var(--paper);border-bottom:1px solid var(--line);display:flex;justify-content:space-between;gap:15px}a{color:var(--green)}header a{font:22px Georgia,serif;text-decoration:none}main{max-width:1050px;margin:auto;padding:25px 18px 70px}.hero{background:linear-gradient(90deg,#173b2fe8,#173b2f80),url('../assets/assets/hero/hero-1.jpg') center/cover;color:white;padding:55px 35px}.hero h1{font:italic clamp(35px,6vw,65px) Georgia,serif;margin:8px 0}section{background:var(--paper);border:1px solid var(--line);padding:clamp(20px,4vw,35px);margin:22px 0}h2{font:normal 32px Georgia,serif;color:var(--green);margin:0 0 12px}h3{color:var(--terra)}.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}.box{padding:20px;background:#f6f0e6;border-left:4px solid var(--terra)}.purple{border-color:#8570a7}.orange{border-color:#d18b55}.box p{margin:8px 0}.example{background:#f6f0e6;padding:15px;margin:10px 0;border-radius:4px}.hint{color:var(--muted)}table{width:100%;border-collapse:collapse}td,th{border-bottom:1px solid var(--line);padding:10px;text-align:left}select,input,textarea{font:inherit;padding:8px;border:1px solid #bbb4a9;border-radius:4px;background:var(--paper);color:var(--ink);max-width:100%}input{width:135px}textarea{display:block;width:100%;min-height:90px;margin:10px 0}button{font:inherit;cursor:pointer;border:0;background:var(--green);color:white;padding:10px 16px;border-radius:4px;margin:8px 8px 8px 0}.secondary{background:transparent;color:var(--ink);border:1px solid var(--line)}.example p{line-height:2.7}.example input{vertical-align:middle}.row{padding:12px 0;border-bottom:1px solid var(--line)}.ok{color:#318653}.bad{color:#b65d45}.tag{font-size:12px;letter-spacing:.15em;text-transform:uppercase}.comparison{overflow-x:auto}html[data-theme=dark]{--bg:#111715;--paper:#1c2420;--ink:#f3e6d2;--muted:#b8b2a5;--line:#3b4038;--green:#eac28a;--terra:#dca16d}html[data-theme=dark] .box,html[data-theme=dark] .example{background:#29332c}@media(max-width:650px){.grid{grid-template-columns:1fr}.hero{padding:35px 22px}header a{font-size:17px}}
+
+header { align-items:center; flex-wrap:wrap }
+header button { margin:0 }
+.hero p { margin:0 }
+.table-wrap { overflow-x:auto }
+td,th { vertical-align:top }
+.practice-grid { padding:0; margin:0; list-style:none }
+.prompt { display:flex; flex-wrap:wrap; align-items:center; justify-content:space-between; gap:8px 16px; height:100% }
+.prompt input { flex:0 0 135px }
+@media(max-width:650px) {
+  .prompt input { flex:1 1 100%; width:100% }
+  td,th { padding:8px }
 }
 </style>
 </head>
 <body>
-<header><a href="/espanol-con-valeria/">☼ Español con Valeria</a><button type="button" id="theme">☾ Noche</button></header>
+<header><a href="/espanol-con-valeria/">← Español con Valeria</a><button type="button" id="theme" class="secondary">☾ Noche</button></header>
 <main>
-<div class="hero"><small>GRAMÁTICA · A2 · 45 MIN</small><h1>Imperativo afirmativo</h1><p>Da instrucciones, consejos e indicaciones con <strong>tú</strong> y <strong>usted</strong>.</p></div>
+<div class="hero"><span class="tag">GRAMÁTICA · A2 · 45 MIN</span><h1>Imperativo afirmativo</h1><p>Da instrucciones, consejos e indicaciones con <strong>tú</strong> y <strong>usted</strong>.</p></div>
 
 <section>
 <h2>Gramática</h2>
 <p>Usamos el <strong>imperativo afirmativo</strong> para dar instrucciones, consejos o indicaciones. Usamos <strong>tú</strong> en un trato familiar y <strong>usted</strong> en un trato formal o de cortesía.</p>
 <h3>Verbos regulares</h3>
-<div class="table-wrap"><table class="grammar-table"><thead><tr><th scope="col">Infinitivo</th><th class="form-cell" scope="col">Tú</th><th class="form-cell" scope="col">Usted</th></tr></thead><tbody><tr><td>habl<strong>ar</strong></td><td class="form-cell">habl<strong>a</strong></td><td class="form-cell">habl<strong>e</strong></td></tr>
-<tr><td>com<strong>er</strong></td><td class="form-cell">com<strong>e</strong></td><td class="form-cell">com<strong>a</strong></td></tr>
-<tr><td>abr<strong>ir</strong></td><td class="form-cell">abr<strong>e</strong></td><td class="form-cell">abr<strong>a</strong></td></tr></tbody></table></div>
+<div class="table-wrap"><table><thead><tr><th scope="col">Infinitivo</th><th scope="col">Tú</th><th scope="col">Usted</th></tr></thead><tbody><tr><td>habl<strong>ar</strong></td><td>habl<strong>a</strong></td><td>habl<strong>e</strong></td></tr>
+<tr><td>com<strong>er</strong></td><td>com<strong>e</strong></td><td>com<strong>a</strong></td></tr>
+<tr><td>abr<strong>ir</strong></td><td>abr<strong>e</strong></td><td>abr<strong>a</strong></td></tr></tbody></table></div>
 <ul>
 <li><strong>Tú.</strong> En los verbos regulares, usamos la misma forma que con <strong>él / ella</strong> en presente de indicativo. <em>Ella habla español → Habla más despacio, por favor.</em></li>
 <li><strong>Usted.</strong> Usamos la forma de <strong>usted</strong> del presente de subjuntivo. En los verbos regulares, las terminaciones son <strong>-e</strong> para los verbos en <strong>-ar</strong> y <strong>-a</strong> para los verbos en <strong>-er</strong> e <strong>-ir</strong>. <em>Hable más despacio, por favor.</em></li>
 </ul>
 <h3>Verbos con cambio vocálico</h3>
-<div class="table-wrap"><table class="grammar-table"><thead><tr><th scope="col">Cambio</th><th scope="col">Infinitivo</th><th class="form-cell" scope="col">Tú</th><th class="form-cell" scope="col">Usted</th></tr></thead><tbody><tr><td>e → ie</td><td>cerrar</td><td class="form-cell">cierra</td><td class="form-cell">cierre</td></tr>
-<tr><td>e → ie</td><td>empezar</td><td class="form-cell">empieza</td><td class="form-cell">empiece</td></tr>
-<tr><td>o → ue</td><td>volver</td><td class="form-cell">vuelve</td><td class="form-cell">vuelva</td></tr>
-<tr><td>o → ue</td><td>probar</td><td class="form-cell">prueba</td><td class="form-cell">pruebe</td></tr>
-<tr><td>e → i</td><td>pedir</td><td class="form-cell">pide</td><td class="form-cell">pida</td></tr>
-<tr><td>e → i</td><td>repetir</td><td class="form-cell">repite</td><td class="form-cell">repita</td></tr></tbody></table></div>
+<div class="table-wrap"><table><thead><tr><th scope="col">Cambio</th><th scope="col">Infinitivo</th><th scope="col">Tú</th><th scope="col">Usted</th></tr></thead><tbody><tr><td>e → ie</td><td>cerrar</td><td>cierra</td><td>cierre</td></tr>
+<tr><td>e → ie</td><td>empezar</td><td>empieza</td><td>empiece</td></tr>
+<tr><td>o → ue</td><td>volver</td><td>vuelve</td><td>vuelva</td></tr>
+<tr><td>o → ue</td><td>probar</td><td>prueba</td><td>pruebe</td></tr>
+<tr><td>e → i</td><td>pedir</td><td>pide</td><td>pida</td></tr>
+<tr><td>e → i</td><td>repetir</td><td>repite</td><td>repita</td></tr></tbody></table></div>
 <h3>Ocho verbos irregulares frecuentes</h3>
-<div class="table-wrap"><table class="grammar-table"><thead><tr><th scope="col">Infinitivo</th><th class="form-cell" scope="col">Tú</th><th class="form-cell" scope="col">Usted</th><th scope="col">Ejemplo con usted</th></tr></thead><tbody><tr><td>decir</td><td class="form-cell">di</td><td class="form-cell">diga</td><td>Diga su nombre, por favor.</td></tr>
-<tr><td>hacer</td><td class="form-cell">haz</td><td class="form-cell">haga</td><td>Haga una lista.</td></tr>
-<tr><td>ir</td><td class="form-cell">ve</td><td class="form-cell">vaya</td><td>Vaya a recepción.</td></tr>
-<tr><td>poner</td><td class="form-cell">pon</td><td class="form-cell">ponga</td><td>Ponga la maleta aquí.</td></tr>
-<tr><td>salir</td><td class="form-cell">sal</td><td class="form-cell">salga</td><td>Salga por la puerta principal.</td></tr>
-<tr><td>ser</td><td class="form-cell">sé</td><td class="form-cell">sea</td><td>Sea paciente, por favor.</td></tr>
-<tr><td>tener</td><td class="form-cell">ten</td><td class="form-cell">tenga</td><td>Tenga cuidado con el escalón.</td></tr>
-<tr><td>venir</td><td class="form-cell">ven</td><td class="form-cell">venga</td><td>Venga mañana a las diez.</td></tr></tbody></table></div>
+<div class="table-wrap"><table><thead><tr><th scope="col">Infinitivo</th><th scope="col">Tú</th><th scope="col">Usted</th><th scope="col">Ejemplo con usted</th></tr></thead><tbody><tr><td>decir</td><td>di</td><td>diga</td><td>Diga su nombre, por favor.</td></tr>
+<tr><td>hacer</td><td>haz</td><td>haga</td><td>Haga una lista.</td></tr>
+<tr><td>ir</td><td>ve</td><td>vaya</td><td>Vaya a recepción.</td></tr>
+<tr><td>poner</td><td>pon</td><td>ponga</td><td>Ponga la maleta aquí.</td></tr>
+<tr><td>salir</td><td>sal</td><td>salga</td><td>Salga por la puerta principal.</td></tr>
+<tr><td>ser</td><td>sé</td><td>sea</td><td>Sea paciente, por favor.</td></tr>
+<tr><td>tener</td><td>ten</td><td>tenga</td><td>Tenga cuidado con el escalón.</td></tr>
+<tr><td>venir</td><td>ven</td><td>venga</td><td>Venga mañana a las diez.</td></tr></tbody></table></div>
 </section>
 
 <section>
 <h2>1. Completa las instrucciones</h2>
 <p>Completa cada frase con el imperativo afirmativo de <strong>tú</strong> del verbo entre paréntesis.</p>
 <ol class="practice-grid" role="list">
-<li><label class="prompt"><span>1. ______ la puerta, por favor. <em>(abrir)</em></span><input type="text" autocomplete="off" spellcheck="false"></label></li>
-<li><label class="prompt"><span>2. ______ tu número de teléfono aquí. <em>(escribir)</em></span><input type="text" autocomplete="off" spellcheck="false"></label></li>
-<li><label class="prompt"><span>3. ______ a la izquierda después del puente. <em>(girar)</em></span><input type="text" autocomplete="off" spellcheck="false"></label></li>
-<li><label class="prompt"><span>4. ______ la ventana antes de salir. <em>(cerrar)</em></span><input type="text" autocomplete="off" spellcheck="false"></label></li>
-<li><label class="prompt"><span>5. ______ una mesa para dos, por favor. <em>(pedir)</em></span><input type="text" autocomplete="off" spellcheck="false"></label></li>
-<li><label class="prompt"><span>6. ______ la palabra más despacio. <em>(repetir)</em></span><input type="text" autocomplete="off" spellcheck="false"></label></li>
-<li><label class="prompt"><span>7. ______ la mochila debajo de la silla. <em>(poner)</em></span><input type="text" autocomplete="off" spellcheck="false"></label></li>
-<li><label class="prompt"><span>8. ______ una foto del mapa. <em>(hacer)</em></span><input type="text" autocomplete="off" spellcheck="false"></label></li>
-<li><label class="prompt"><span>9. ______ a la estación en metro. <em>(ir)</em></span><input type="text" autocomplete="off" spellcheck="false"></label></li>
-<li><label class="prompt"><span>10. ______ por la puerta de la derecha. <em>(salir)</em></span><input type="text" autocomplete="off" spellcheck="false"></label></li>
-<li><label class="prompt"><span>11. ______ a mi casa después de clase. <em>(venir)</em></span><input type="text" autocomplete="off" spellcheck="false"></label></li>
-<li><label class="prompt"><span>12. ______ tu dirección en voz alta. <em>(decir)</em></span><input type="text" autocomplete="off" spellcheck="false"></label></li>
+<li class="example"><label class="prompt"><span>1. ______ la puerta, por favor. <em>(abrir)</em></span><input type="text" autocomplete="off" spellcheck="false"></label></li>
+<li class="example"><label class="prompt"><span>2. ______ tu número de teléfono aquí. <em>(escribir)</em></span><input type="text" autocomplete="off" spellcheck="false"></label></li>
+<li class="example"><label class="prompt"><span>3. ______ a la izquierda después del puente. <em>(girar)</em></span><input type="text" autocomplete="off" spellcheck="false"></label></li>
+<li class="example"><label class="prompt"><span>4. ______ la ventana antes de salir. <em>(cerrar)</em></span><input type="text" autocomplete="off" spellcheck="false"></label></li>
+<li class="example"><label class="prompt"><span>5. ______ una mesa para dos, por favor. <em>(pedir)</em></span><input type="text" autocomplete="off" spellcheck="false"></label></li>
+<li class="example"><label class="prompt"><span>6. ______ la palabra más despacio. <em>(repetir)</em></span><input type="text" autocomplete="off" spellcheck="false"></label></li>
+<li class="example"><label class="prompt"><span>7. ______ la mochila debajo de la silla. <em>(poner)</em></span><input type="text" autocomplete="off" spellcheck="false"></label></li>
+<li class="example"><label class="prompt"><span>8. ______ una foto del mapa. <em>(hacer)</em></span><input type="text" autocomplete="off" spellcheck="false"></label></li>
+<li class="example"><label class="prompt"><span>9. ______ a la estación en metro. <em>(ir)</em></span><input type="text" autocomplete="off" spellcheck="false"></label></li>
+<li class="example"><label class="prompt"><span>10. ______ por la puerta de la derecha. <em>(salir)</em></span><input type="text" autocomplete="off" spellcheck="false"></label></li>
+<li class="example"><label class="prompt"><span>11. ______ a mi casa después de clase. <em>(venir)</em></span><input type="text" autocomplete="off" spellcheck="false"></label></li>
+<li class="example"><label class="prompt"><span>12. ______ tu dirección en voz alta. <em>(decir)</em></span><input type="text" autocomplete="off" spellcheck="false"></label></li>
 </ol>
 </section>
 
 <section>
 <h2>2. Un día en mi ciudad</h2>
 <p>Tu profe visita tu ciudad por primera vez. Recomienda un lugar concreto y dale dos instrucciones o consejos para cada situación. Usa el imperativo afirmativo de <strong>tú</strong>. Puedes usar los verbos de la tabla o elegir otros.</p>
-<div class="table-wrap"><table class="city-table"><thead><tr><th scope="col">Tu profe pregunta…</th><th scope="col">Puedes usar…</th></tr></thead><tbody><tr><td>Estoy en el centro y quiero desayunar. ¿Adónde voy? ¿Qué puedo pedir?</td><td>ir a una cafetería · pedir un café · probar un plato típico</td></tr>
+<div class="table-wrap"><table><thead><tr><th scope="col">Tu profe pregunta…</th><th scope="col">Puedes usar…</th></tr></thead><tbody><tr><td>Estoy en el centro y quiero desayunar. ¿Adónde voy? ¿Qué puedo pedir?</td><td>ir a una cafetería · pedir un café · probar un plato típico</td></tr>
 <tr><td>Quiero visitar un museo. ¿Qué museo me recomiendas? ¿Cómo llego?</td><td>tomar el autobús · caminar dos calles · girar a la derecha · comprar la entrada por internet</td></tr>
 <tr><td>Tengo una hora libre antes de volver al hotel. ¿Qué puedo hacer cerca de aquí?</td><td>ir a un parque · dar un paseo · hacer una foto · volver por la plaza</td></tr></tbody></table></div>
 </section>
@@ -168,16 +85,16 @@ td { border-top:1px solid var(--line) }
 <h2>3. Corrige el mensaje</h2>
 <p>Un amigo quiere darte instrucciones en un mensaje, pero ha usado el presente de indicativo. Cambia el verbo en negrita al imperativo afirmativo de <strong>tú</strong>.</p>
 <ol class="practice-grid" role="list">
-<li><label class="prompt"><span>1. <strong>Haces</strong> una lista antes de salir.</span><input type="text" autocomplete="off" spellcheck="false"></label></li>
-<li><label class="prompt"><span>2. <strong>Pones</strong> el móvil en la mochila.</span><input type="text" autocomplete="off" spellcheck="false"></label></li>
-<li><label class="prompt"><span>3. <strong>Giras</strong> a la izquierda al salir del metro.</span><input type="text" autocomplete="off" spellcheck="false"></label></li>
-<li><label class="prompt"><span>4. <strong>Dices</strong> tu nombre en recepción.</span><input type="text" autocomplete="off" spellcheck="false"></label></li>
-<li><label class="prompt"><span>5. <strong>Vienes</strong> a mi casa a las siete.</span><input type="text" autocomplete="off" spellcheck="false"></label></li>
-<li><label class="prompt"><span>6. <strong>Cierras</strong> la puerta con llave.</span><input type="text" autocomplete="off" spellcheck="false"></label></li>
-<li><label class="prompt"><span>7. <strong>Pides</strong> la cuenta antes de salir.</span><input type="text" autocomplete="off" spellcheck="false"></label></li>
-<li><label class="prompt"><span>8. <strong>Vas</strong> a la farmacia de la esquina.</span><input type="text" autocomplete="off" spellcheck="false"></label></li>
-<li><label class="prompt"><span>9. <strong>Sales</strong> por la puerta principal.</span><input type="text" autocomplete="off" spellcheck="false"></label></li>
-<li><label class="prompt"><span>10. <strong>Tienes</strong> cuidado al cruzar la calle.</span><input type="text" autocomplete="off" spellcheck="false"></label></li>
+<li class="example"><label class="prompt"><span>1. <strong>Haces</strong> una lista antes de salir.</span><input type="text" autocomplete="off" spellcheck="false"></label></li>
+<li class="example"><label class="prompt"><span>2. <strong>Pones</strong> el móvil en la mochila.</span><input type="text" autocomplete="off" spellcheck="false"></label></li>
+<li class="example"><label class="prompt"><span>3. <strong>Giras</strong> a la izquierda al salir del metro.</span><input type="text" autocomplete="off" spellcheck="false"></label></li>
+<li class="example"><label class="prompt"><span>4. <strong>Dices</strong> tu nombre en recepción.</span><input type="text" autocomplete="off" spellcheck="false"></label></li>
+<li class="example"><label class="prompt"><span>5. <strong>Vienes</strong> a mi casa a las siete.</span><input type="text" autocomplete="off" spellcheck="false"></label></li>
+<li class="example"><label class="prompt"><span>6. <strong>Cierras</strong> la puerta con llave.</span><input type="text" autocomplete="off" spellcheck="false"></label></li>
+<li class="example"><label class="prompt"><span>7. <strong>Pides</strong> la cuenta antes de salir.</span><input type="text" autocomplete="off" spellcheck="false"></label></li>
+<li class="example"><label class="prompt"><span>8. <strong>Vas</strong> a la farmacia de la esquina.</span><input type="text" autocomplete="off" spellcheck="false"></label></li>
+<li class="example"><label class="prompt"><span>9. <strong>Sales</strong> por la puerta principal.</span><input type="text" autocomplete="off" spellcheck="false"></label></li>
+<li class="example"><label class="prompt"><span>10. <strong>Tienes</strong> cuidado al cruzar la calle.</span><input type="text" autocomplete="off" spellcheck="false"></label></li>
 </ol>
 </section>
 </main>
